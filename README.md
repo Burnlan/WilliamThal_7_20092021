@@ -1,10 +1,7 @@
-# Next up
-- Create database
-- Create APi 
-- Finish the frontend
+# INFOS ABOUT THE PROJECT
 
-### Database
-What's in it ? 
+### DATABASE STRUCTURE
+What's it like ? 
 #### Tables
 - Users
 - Groups
@@ -17,7 +14,6 @@ What's in it ?
 - lastname
 - pictureURL
 
-//to link multiple users to multiple groups
 ##### UserGroups 
 - user_id
 - group_id
@@ -39,3 +35,24 @@ What's in it ?
 - userId
 - dateCreated
 - content
+
+### API ROUTES
+##### User routes
+- Signup
+- Login
+- Delete account
+- Change name
+- Change picture
+- Change group
+
+##### Post routes
+- Create post
+- Delete post
+- Edit post
+- Display posts
+
+##### Reply routes
+- Create reply
+- Delete reply
+- Edit reply
+- Display replies

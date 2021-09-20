@@ -13,24 +13,26 @@ app.use(express.json());
 const path = require('path');
 
 
-//connect to the database
+//connect to the database using our "db_social_manager" user
 const con = mysql.createConnection({
   host: "localhost",
-  user: "Tester",
-  password: "oraora",
-  database: "elevage"
+  user: "db_social_manager",
+  password: "|u%0#5]&a@I81`G",
+  database: "groupomania_social"
 });
 
-//connect or throw error if connectionw as unsuccessfull
-con.connect( err => {
+//connect or throw error if connection as unsuccessfull
+con.connect( (err, result) => {
   if (err) throw err;
-  console.log("connected !");
-  con.query("select * from animal", (err, result, fields) => {
-    if (err) throw err;
-    console.log(result[5].nom);
-  });
+  console.log("Successfully connected to groupomania_social database !");
 });
 
+/* A query sample 
+con.query("select * from animal", (err, result, fields) => {
+  if (err) throw err;
+  console.log(result[5].nom);
+});
+*/
 //allow CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
