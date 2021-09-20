@@ -1,24 +1,41 @@
-# groupomania
+# Next up
+- Create database
+- Create APi 
+- Finish the frontend
 
-## Project setup
-```
-npm install
-```
+### Database
+What's in it ? 
+#### Tables
+- Users
+- Groups
+- Posts
+- Replies
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+##### Users
+- id
+- firstname
+- lastname
+- pictureURL
 
-### Compiles and minifies for production
-```
-npm run build
-```
+//to link multiple users to multiple groups
+##### UserGroups 
+- user_id
+- group_id
 
-### Lints and fixes files
-```
-npm run lint
-```
+##### Groups
+- id
+- name
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+##### Posts
+- id
+- groupId
+- userId
+- dateCreated
+- content
+
+##### Replies
+- id
+- postId
+- userId
+- dateCreated
+- content
