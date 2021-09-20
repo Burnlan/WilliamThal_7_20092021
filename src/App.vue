@@ -1,30 +1,44 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <Header />
+  <div class="container-xxl row">
+  <SideBar />
+    <div class="col-9">
+
+      <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+
+    <router-view/>
+    </div>
+  
+
   </div>
-  <router-view/>
+  
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// @ is an alias to /src
+import Header from '@/components/Header.vue'
+import SideBar from '@/components/SideBar.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: $clr-darkblue;
-
-    &.router-link-exact-active {
-      color: $clr-red;
-    }
+export default {
+  name: 'App',
+  components: {
+    Header,
+    SideBar
   }
 }
+</script>
+
+
+<style lang="scss">
+h1, h2, h3 {
+  font: $latoBold;
+}
+
+p, a, li {
+  font: $latoReg;
+}
+
 </style>
