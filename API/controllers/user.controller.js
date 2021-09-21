@@ -1,5 +1,5 @@
 //this controller requires the user model, bcrypt and json web token
-const User = require('../models/user');
+const User = require('../models/user.model.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -15,9 +15,12 @@ exports.signup = (req, res, next) => {
                 email: req.body.email,
                 password: hash
             })
+        console.log(user);
         //now we save the user in  the database
+        /*
             user.create()
                 .then(() => res.status(201).json({ message: 'New user created'}))
                 .catch(error => res.status(400).json({ error }));
+        */
         })
 };

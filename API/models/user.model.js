@@ -8,7 +8,7 @@ const User = function(user) {
     this.rights_id = 1; //every user is created as a base user at first
     this.email = user.email;
     this.password = user.password;
-    this.date_created = Date();
+    this.date_created = new Date().toISOString().slice(0, 19).replace('T', ' '); //this code gives us mysql date format
 };
 
 User.create = (newUser, result) => {

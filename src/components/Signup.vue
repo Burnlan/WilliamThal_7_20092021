@@ -32,6 +32,20 @@ export default {
         async registerUser(e) {
             e.preventDefault();
             console.log(this.signupdata)
+            let response = await fetch("http://localhost:3000/api/signup", {
+                method: "POST",
+                headers: {
+                    "Accept": 'application/json', 
+                    "Content-Type": "application/json"
+                },
+                //Sends the data in json format
+                body: JSON.stringify(this.signupdata)
+            })
+        if(response.ok){
+            console.log("User "+this.signupdata.firstname+" successfully created !");
+        } else {
+            console.log(response);
+        }
         }
         
     }
