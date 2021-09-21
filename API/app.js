@@ -10,6 +10,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 //routes
+const userRoutes = require('./routes/user.routes.js');
 const path = require('path');
 
 
@@ -33,6 +34,7 @@ con.query("select * from animal", (err, result, fields) => {
   console.log(result[5].nom);
 });
 */
+
 //allow CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -46,8 +48,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 //what the server does on request, aka our routes
-/*
-app.use('/api/auth', userRoutes);
-app.use('/api/sauces', sauceRoutes);
-*/
+app.use('/api', userRoutes);
+
 module.exports = app;
