@@ -17,10 +17,9 @@ exports.signup = (req, res, next) => {
             })
         console.log(user);
         //now we save the user in  the database
-        /*
-            user.create()
-                .then(() => res.status(201).json({ message: 'New user created'}))
-                .catch(error => res.status(400).json({ error }));
-        */
+        User.create(user)
+            .then(() => res.status(201).json({ message: 'New user created'}))
+            .catch(error => res.status(400).json({ error }));
+        
         })
 };
