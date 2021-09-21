@@ -1,14 +1,16 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <ConnectionForm />
   </div>
 </template>
 
 <script>
+import ConnectionForm from '@/components/ConnectionForm.vue'
 
 export default {
   name: 'Home',
   components: {
+    ConnectionForm
   }
 }
 

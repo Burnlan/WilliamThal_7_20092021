@@ -7,14 +7,19 @@ _____________________________________________________
 What's it like ? Here are their descriptions
 
 ##### Users
-+------------+----------------------+------+-----+---------+----------------+
-| Field      | Type                 | Null | Key | Default | Extra          |
-+------------+----------------------+------+-----+---------+----------------+
-| id         | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
-| firstname  | varchar(40)          | NO   |     | NULL    |                |
-| lastname   | varchar(40)          | NO   |     | NULL    |                |
-| pictureUrl | varchar(500)         | YES  |     | NULL    |                |
-+------------+----------------------+------+-----+---------+----------------+
++--------------+----------------------+------+-----+---------+----------------+
+| Field        | Type                 | Null | Key | Default | Extra          |
++--------------+----------------------+------+-----+---------+----------------+
+| id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+| firstname    | varchar(40)          | NO   |     | NULL    |                |
+| lastname     | varchar(40)          | NO   |     | NULL    |                |
+| pictureUrl   | varchar(500)         | YES  |     | NULL    |                |
+| rights_id    | smallint(5) unsigned | NO   | MUL | NULL    |                |
+| email        | varchar(50)          | NO   | UNI | NULL    |                |
+| password     | varchar(64)          | NO   |     | NULL    |                |
+| date_created | datetime             | YES  |     | NULL    |                |
+| date_deleted | datetime             | YES  |     | NULL    |                |
++--------------+----------------------+------+-----+---------+----------------+
 
 ##### Groups
 +-------+----------------------+------+-----+---------+----------------+
@@ -32,6 +37,14 @@ What's it like ? Here are their descriptions
 | group_id | smallint(5) unsigned | NO   | MUL | NULL    |       |
 +----------+----------------------+------+-----+---------+-------+
 
+##### Rights
++-----------+----------------------+------+-----+---------+----------------+
+| Field     | Type                 | Null | Key | Default | Extra          |
++-----------+----------------------+------+-----+---------+----------------+
+| id        | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+| user_type | varchar(30)          | YES  |     | NULL    |                |
++-----------+----------------------+------+-----+---------+----------------+
+
 ##### Posts
 +--------------+----------------------+------+-----+---------+----------------+
 | Field        | Type                 | Null | Key | Default | Extra          |
@@ -41,6 +54,8 @@ What's it like ? Here are their descriptions
 | group_id     | smallint(5) unsigned | NO   | MUL | NULL    |                |
 | date_created | datetime             | NO   |     | NULL    |                |
 | content      | text                 | NO   |     | NULL    |                |
+| date_updated | datetime             | YES  |     | NULL    |                |
+| date_deleted | datetime             | YES  |     | NULL    |                |
 +--------------+----------------------+------+-----+---------+----------------+
 
 ##### Replies
@@ -52,6 +67,8 @@ What's it like ? Here are their descriptions
 | post_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |
 | date_created | datetime             | NO   |     | NULL    |                |
 | content      | text                 | NO   |     | NULL    |                |
+| date_updated | datetime             | YES  |     | NULL    |                |
+| date_deleted | datetime             | YES  |     | NULL    |                |
 +--------------+----------------------+------+-----+---------+----------------+
 
 ______________________________________________________

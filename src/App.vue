@@ -2,14 +2,8 @@
   <Header />
   <div class="container-xxl row">
   <SideBar />
-    <div class="col-9">
-
-      <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-
-    <router-view/>
+    <div class="col-9 pt-5">
+      <router-view/>
     </div>
   
 
@@ -37,7 +31,7 @@ h1, h2, h3 {
   font: $latoBold;
 }
 
-p, a, li {
+p, a, li, label {
   font: $latoReg;
 }
 
