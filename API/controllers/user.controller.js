@@ -48,8 +48,10 @@ exports.login = (req, res, next) => {
                             //the token will be valid for 12h
                             { expiresIn: "12h"}
                         )
-                    //we send the token back to the user
-                    res.status(201).json(token);
+                    //we store the token in a secure cookie
+                    res.cookie("token", token, {httpOnly: true});
+                    res.status(201).json();
+
                 })
                 .catch(error => res.status(500).json({ error: error }));
         }

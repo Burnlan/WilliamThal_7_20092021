@@ -30,10 +30,8 @@ export default {
                 body: JSON.stringify(this.logindata)
             })
             if(response.ok){
-                //we get the token from the response using the .text() method
-                let token = await response.text();
-                //we create a cookie contaning the token, as it's more secure that storing the token in localstorage
-                document.cookie = "token="+token;
+                //we then display the users main feed
+                this.$router.replace("/Feed");
             } else {
                 console.log(response);
             }
