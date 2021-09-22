@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form class="d-flex flex-column">
         <label for="firstnameInput" class="form-label">Prénom</label>
         <input type="text" id="firstnameInput" class="form-control" v-model="signupdata.firstname">
         <label for="lastnameInput" class="form-label">Nom</label>
@@ -8,7 +8,7 @@
         <input type="email" id="emailInput" class="form-control" v-model="signupdata.email">
         <label for="pwdInput" class="form-label">Mot de passe</label>
         <input type="password" class="form-control" id="pwdInput" v-model="signupdata.password">
-        <button @click="registerUser" class="btn btn-primary mt-3 end">Créer un compte</button>
+        <button @click="registerUser" class="btn btn-primary mt-3 align-self-end">Créer un compte</button>
     </form>
 </template>
 

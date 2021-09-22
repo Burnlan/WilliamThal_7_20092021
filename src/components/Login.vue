@@ -1,10 +1,10 @@
 <template>
-    <form>
+    <form class="d-flex flex-column">
         <label for="emailInput" class="form-label">Adresse email</label>
         <input type="email" id="emailInput" class="form-control" v-model="logindata.email">
         <label for="pwdInput" class="form-label">Mot de passe</label>
         <input type="password" class="form-control" id="pwdInput" v-model="logindata.password">
-        <button @click="login" class="btn btn-primary mt-3 end">Se connecter</button>
+        <button @click="login" class="btn btn-primary mt-3 align-self-end">Se connecter</button>
     </form>
 </template>
 

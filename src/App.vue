@@ -24,11 +24,18 @@ export default {
     }
   },
   methods: {
-    checkToken() {
+    async checkToken() {
       console.log("checking tokens");
       //we check if our "token" cookie exist
       if (document.cookie.split(';').some((item) => item.trim().startsWith('token='))) {
         console.log("Token cookie exists !")
+        //if the cookie exist, we check that it's valid using our "authenticate" route
+        let response = await fetch("http://localhost:3000/api/authenticate")
+        if (response.ok) {
+          //if the token was good we get a user in response
+          let userData = await response.json(); 
+          console.log("valid token with user id :"+userData)
+        }
       } else {
         console.log("Token cookie doesn't exist !")
       }

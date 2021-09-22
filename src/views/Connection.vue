@@ -1,9 +1,9 @@
 <template>
-<div class="container-sm p-5">
+<div class="container-sm d-flex flex-column p-5">
   
   <h1>Bienvenue</h1>
 
-  <div class="btn-group con-selector m-3" role="group">
+  <div class="btn-group con-selector" role="group">
     <button @click="select('signup')" class="btn btn-outline-primary" ref="signbtn">S'inscrire</button>
     <button @click="select('login')" class="btn btn-outline-primary" ref="logbtn">Se connecter</button>
   </div>
@@ -56,7 +56,9 @@ export default {
 
 <style lang="scss" scoped>
 .con-selector {
-  display: flex;
+  width: 250px;
+  align-self: center;
+  padding: 10px;
 }
 h1{
   text-align: center;
