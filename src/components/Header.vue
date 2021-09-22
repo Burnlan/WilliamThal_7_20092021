@@ -1,8 +1,10 @@
 <template>
-    <header class="container-fluid">
-        <div class="row container">
-            <div class="col-6">
-
+    <header>
+        <div class="container-md m-auto row h-100">
+            <div class="col-6 d-flex h-100 align-items-center">
+                <div class="user-info">
+                    <h1>{{ username }}</h1>
+                </div>
             </div>
             <div class="col-6">
 
@@ -13,14 +15,27 @@
 
 <script>
 export default {
+    name: "Header",
+    props: ["user"],
+    data() {
+        return {
+            username: "Aucun utilisateur connecté"
+        }
+    }
 
 }
 </script>
 
 <style lang="scss">
-    header {
-        background: $clr-darkblue;
-        height: 100px;
-    }
+header {
+     background: $clr-darkblue;
+     width: 100%;
+     height: 100px;
+}
+.user-info {
+    color: white;
+    text-align: right;
+}
+
 
 </style>

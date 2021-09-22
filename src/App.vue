@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <Header :user="user"/>
   
   <div class="container-fluid">
       <router-view/>
@@ -15,6 +15,27 @@ export default {
   name: 'App',
   components: {
     Header,
+  },
+  data() {
+    return {
+      //we use this value to check if a user is conencted, by default it's false
+      isConnected: false,
+      user: ""
+    }
+  },
+  methods: {
+    checkToken() {
+      console.log("checking tokens");
+      //we check if our "token" cookie exist
+      if (document.cookie.split(';').some((item) => item.trim().startsWith('token='))) {
+        console.log("Token cookie exists !")
+      } else {
+        console.log("Token cookie doesn't exist !")
+      }
+    }
+  },
+  mounted() {
+    this.checkToken();
   }
 }
 </script>
