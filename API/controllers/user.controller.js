@@ -20,6 +20,40 @@ exports.signup = (req, res, next) => {
         User.create(user)
             .then(() => res.status(201).json({ message: 'New user created'}))
             .catch(error => res.status(400).json({ error }));
-        
-        })
+        });
 };
+
+//function to log in, and give a token to keep the session active
+exports.login = (req, res, next) => {
+    //we search if a user with the given email exists
+    User.findByMail(req.body.email, (err, foundUser) => {
+        if (err) {
+            //if it's unsuccessfull
+        } else {
+            //if the user exists, it's returned in an object
+            //we use bcrypt to check if the request used the right password
+            bcrypt.compare(req.body.password, foundUser.password)
+                .then(valid => {
+                    //if the password is invalid
+                    if(!valid) {
+                        return res.status(401).json({ error: "Wrong password !"});
+                    }
+                    //if the passwords match we send an authorization token within the response
+                    console.log("creating token for : "+foundUser.firstname);
+                    res.status(201).json({
+                        userId: foundUser.id,
+                        token : jwt.sign(
+                            //the payload is the user id
+                            { userId: foundUser.id },
+                            //We used a randomly generated key to encrypt the data
+                            "_7xx7sa4fcKoQ27nnuv3HZxWESHB2bweZoTG1QOw9SaBHE2EUNSTBbZGP0GaObFQLYor",
+                            //the token will be valid for 12h
+                            { expiresIn: "12h"}
+                        )
+                    });
+                })
+                .catch(error => res.status(500).json({ error: error }));
+        }
+    });
+};
+

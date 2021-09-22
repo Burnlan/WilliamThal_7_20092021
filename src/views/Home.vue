@@ -28,7 +28,12 @@ export default {
       signup: false
     }
   },
+  //we init the components with the login form
+  mounted() {
+    this.$refs.logbtn.classList.add("active");
+  },
   methods: {
+  //switches between showing the login form or the signup form
     select(btn) {
       if(btn == "signup") {
         this.$refs.logbtn.classList.remove("active");
@@ -39,7 +44,6 @@ export default {
         this.$refs.logbtn.classList.add("active");
         this.signup = false;
       }
-    console.log(this.signup);
     }
   }
 }

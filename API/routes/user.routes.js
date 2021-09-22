@@ -7,7 +7,7 @@ const userCtrl = require('../controllers/user.controller.js');
 
 //we set the routes for signup and login
 router.post('/signup', userCtrl.signup);
-
+router.post('/login', userCtrl.login);
 
 //we export everything
 module.exports = router;
