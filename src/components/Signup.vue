@@ -31,7 +31,6 @@ export default {
     methods: {
         async registerUser(e) {
             e.preventDefault();
-            console.log(this.signupdata)
             let response = await fetch("http://localhost:3000/api/signup", {
                 method: "POST",
                 headers: {

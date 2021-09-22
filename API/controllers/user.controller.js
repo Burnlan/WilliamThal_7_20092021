@@ -38,11 +38,9 @@ exports.login = (req, res, next) => {
                     if(!valid) {
                         return res.status(401).json({ error: "Wrong password !"});
                     }
-                    //if the passwords match we send an authorization token within the response
+                    //if the passwords match we create a token with the id
                     console.log("creating token for : "+foundUser.firstname);
-                    res.status(201).json({
-                        userId: foundUser.id,
-                        token : jwt.sign(
+                    let token = jwt.sign(
                             //the payload is the user id
                             { userId: foundUser.id },
                             //We used a randomly generated key to encrypt the data
@@ -50,7 +48,8 @@ exports.login = (req, res, next) => {
                             //the token will be valid for 12h
                             { expiresIn: "12h"}
                         )
-                    });
+                    //we send the token back to the user
+                    res.status(201).json(token);
                 })
                 .catch(error => res.status(500).json({ error: error }));
         }

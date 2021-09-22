@@ -30,7 +30,10 @@ export default {
                 body: JSON.stringify(this.logindata)
             })
             if(response.ok){
-                console.log("User successfully connected !");
+                //we get the token from the response using the .text() method
+                let token = await response.text();
+                //we create a cookie contaning the token, as it's more secure that storing the token in localstorage
+                document.cookie = "token="+token;
             } else {
                 console.log(response);
             }
