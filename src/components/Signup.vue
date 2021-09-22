@@ -1,5 +1,4 @@
 <template>
-<div>
     <form>
         <label for="firstnameInput" class="form-label">Prénom</label>
         <input type="text" id="firstnameInput" class="form-control" v-model="signupdata.firstname">
@@ -11,12 +10,6 @@
         <input type="password" class="form-control" id="pwdInput" v-model="signupdata.password">
         <button @click="registerUser" class="btn btn-primary mt-3 end">Créer un compte</button>
     </form>
-
-</div>
-
-
-
-
 </template>
 
 <script>

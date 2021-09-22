@@ -1,12 +1,8 @@
 <template>
   <Header />
-  <div class="container-xxl row">
-  <SideBar />
-    <div class="col-9 pt-5">
-      <router-view/>
-    </div>
   
-
+  <div class="container-fluid">
+      <router-view/>
   </div>
   
 </template>
@@ -14,13 +10,11 @@
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
-import SideBar from '@/components/SideBar.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
-    SideBar
   }
 }
 </script>

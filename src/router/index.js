@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Connection from '../views/Connection.vue'
 import GroupFeed from '../views/GroupFeed.vue'
 import Settings from '../views/Settings.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Connection',
+    component: Connection
   },
   {
     path: '/feed',
