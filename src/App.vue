@@ -18,31 +18,28 @@ export default {
   },
   data() {
     return {
-      //we use this value to check if a user is conencted, by default it's false
+      //we use this value to check if a user is connected, by default it's false
       isConnected: false,
       user: ""
     }
   },
   methods: {
-    async checkToken() {
-      console.log("checking tokens");
-      //we check if our "token" cookie exist
-      if (document.cookie.split(';').some((item) => item.trim().startsWith('token='))) {
-        console.log("Token cookie exists !")
-        //if the cookie exist, we check that it's valid using our "authenticate" route
-        let response = await fetch("http://localhost:3000/api/authenticate")
-        if (response.ok) {
-          //if the token was good we get a user in response
-          let userData = await response.json(); 
-          console.log("valid token with user id :"+userData)
-        }
-      } else {
-        console.log("Token cookie doesn't exist !")
+    //this method whenever the app is mounted, and automatically redirect a user to their feed provided the right cookie exists 
+    async authenticate() {
+      //this route return user data 
+      let response = await fetch("http://localhost:3000/api/authenticate", {
+        method: "GET",
+        credentials: 'include',
+      });
+      if (response.ok) {
+        //if the token was good we get a user in response
+        let userData = await response.json(); 
+        console.log("valid token with user id :"+userData)
       }
     }
   },
   mounted() {
-    this.checkToken();
+    this.authenticate();
   }
 }
 </script>

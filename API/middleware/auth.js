@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
     //we place everything inside a try catch for ease of debugging
     try {
-        //we get the token the user is using
-        const token = req.headers.authorization.split(' ')[1];
+        //we get the token the user is using using cookieParser
+        const token = req.cookies['token'];
         //we decode the token using our rendom key
         const decodedToken = jwt.verify(token, "_7xx7sa4fcKoQ27nnuv3HZxWESHB2bweZoTG1QOw9SaBHE2EUNSTBbZGP0GaObFQLYor");
         //we get the user id from the decoded token
@@ -16,6 +16,7 @@ module.exports = (req, res, next) => {
             throw 'Unauthorized access : invalid token';
         }
         else {
+            console.log("valid token with user id : "+req.body.userId);
             next();
         }
     } catch {

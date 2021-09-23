@@ -22,16 +22,18 @@ export default {
             e.preventDefault();
             let response = await fetch("http://localhost:3000/api/login", {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     "Accept": 'application/json', 
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 //Sends the data in json format
                 body: JSON.stringify(this.logindata)
             })
             if(response.ok){
                 //we then display the users main feed
-                this.$router.replace("/Feed");
+                //this.$router.replace("/Feed");
+                console.log(response);
             } else {
                 console.log(response);
             }

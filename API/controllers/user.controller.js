@@ -39,7 +39,6 @@ exports.login = (req, res, next) => {
                         return res.status(401).json({ error: "Wrong password !"});
                     }
                     //if the passwords match we create a token with the id
-                    console.log("creating token for : "+foundUser.firstname);
                     let token = jwt.sign(
                             //the payload is the user id
                             { userId: foundUser.id },
@@ -49,12 +48,17 @@ exports.login = (req, res, next) => {
                             { expiresIn: "12h"}
                         )
                     //we store the token in a secure cookie
-                    res.cookie("token", token, {httpOnly: true});
-                    res.status(201).json();
+                    console.log("created token : "+token);
+                    res.cookie("token", token, { httpOnly: true, secure: true });
+                    res.status(201).send();
 
                 })
                 .catch(error => res.status(500).json({ error: error }));
         }
     });
+};
+
+exports.authenticate = (req, res, next) => {
+    console.log('succesfully authenticated');
 };
 
