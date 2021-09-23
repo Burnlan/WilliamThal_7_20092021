@@ -31,9 +31,9 @@ export default {
                 body: JSON.stringify(this.logindata)
             })
             if(response.ok){
-                //we then display the users main feed
-                //this.$router.replace("/Feed");
-                console.log(response);
+                //we store the user's data in local storage for ease of access.
+                let data = await response.json();
+                console.log(data);
             } else {
                 console.log(response);
             }

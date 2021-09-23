@@ -44,21 +44,31 @@ exports.login = (req, res, next) => {
                             { userId: foundUser.id },
                             //We used a randomly generated key to encrypt the data
                             "_7xx7sa4fcKoQ27nnuv3HZxWESHB2bweZoTG1QOw9SaBHE2EUNSTBbZGP0GaObFQLYor",
-                            //the token will be valid for 12h
-                            { expiresIn: "12h"}
+                            //the token will be valid for 24h
+                            { expiresIn: "24h"}
                         )
                     //we store the token in a secure cookie
-                    console.log("created token : "+token);
                     res.cookie("token", token, { httpOnly: true, secure: true });
-                    res.status(201).send();
+                    //we will encrypt the user id as it'll be used for authentication 
+                    //note that we add as string to the id as bcrypt only works with strings. In the end, it only reinforces security
+                    bcrypt.hash("encrypt"+foundUser.id, 11)
+                        .then( hash => {
+                            //now we send relevant data to be stored in the user's localstorage
+                            let userData = {
+                                id: hash,
+                                firstname: foundUser.firstname,
+                                lastname: foundUser.lastname,
+                                pictureUrl: foundUser.pictureUrl
+                            }
+                            res.status(201).json(userData);
+                        });
+                    
+                   
+                    
 
                 })
                 .catch(error => res.status(500).json({ error: error }));
         }
     });
-};
-
-exports.authenticate = (req, res, next) => {
-    console.log('succesfully authenticated');
 };
 

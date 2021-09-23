@@ -25,21 +25,10 @@ export default {
   },
   methods: {
     //this method whenever the app is mounted, and automatically redirect a user to their feed provided the right cookie exists 
-    async authenticate() {
-      //this route return user data 
-      let response = await fetch("http://localhost:3000/api/authenticate", {
-        method: "GET",
-        credentials: 'include',
-      });
-      if (response.ok) {
-        //if the token was good we get a user in response
-        let userData = await response.json(); 
-        console.log("valid token with user id :"+userData)
-      }
-    }
+    
   },
   mounted() {
-    this.authenticate();
+    
   }
 }
 </script>

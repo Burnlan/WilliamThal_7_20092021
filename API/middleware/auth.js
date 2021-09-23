@@ -13,10 +13,11 @@ module.exports = (req, res, next) => {
         const userId = decodedToken.userId;
         //we check that the userId in the token is validate. If not we throw an error, if it's ok we allow the process to continue
         if (req.body.userId && req.body.userId !== userId) {
-            throw 'Unauthorized access : invalid token';
+            //if there is no match, we send a 401 response
+            res.status(401).send();
         }
         else {
-            console.log("valid token with user id : "+req.body.userId);
+            //if everything is good we give the userId to the next function that will retrieve relevant user data
             next();
         }
     } catch {
