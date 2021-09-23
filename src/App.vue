@@ -1,5 +1,5 @@
 <template>
-  <Header :user="user"/>
+  <Header :isConnected="isConnected" />
   
   <div class="container-fluid">
       <router-view/>
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      //we use this value to check if a user is connected, by default it's false
+      //we use this value to check if a user is connected, by default it's false and no user data is provided
       isConnected: false,
     }
   },
@@ -41,7 +41,12 @@ export default {
           //Sends the data in json format
           body: user
         });          
-        console.log(response);
+        if(response.ok){
+          //if we get an ok from the server, we flip the app on using the "isConnected" boolean
+          this.isConnected = true;
+          //we then reroute the user to their feed
+          this.$router.replace("/feed");
+        }
       }
       
     }

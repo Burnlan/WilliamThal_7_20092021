@@ -64,6 +64,7 @@ exports.login = (req, res, next) => {
 };
 
 exports.authenticate = (req, res, next) => {
-   console.log("test");
+    //simple function that return a res.ok if a user passed the auth middleware.
+    res.status(200).send();
 };
 
