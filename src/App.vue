@@ -20,15 +20,34 @@ export default {
     return {
       //we use this value to check if a user is connected, by default it's false
       isConnected: false,
-      user: ""
     }
   },
   methods: {
-    //this method whenever the app is mounted, and automatically redirect a user to their feed provided the right cookie exists 
-    
+    //this method is called whenever the app is mounted 
+    //it automatically redirect a user to their feed if they have valid user info in their localstorage 
+    //if there is no way to authenticate a user or get the data, the connection view will be displayed by default
+    async checkConnected() {
+      //first we check if we have a user in our localstorage
+      let user = localStorage.getItem("User");
+      if(user) {
+        //if a user is stored in LS, we check that their id in LS and their token id match. NOTE: this is how we'll check on every secure request
+        let response = await fetch("http://localhost:3000/api/authenticate", {
+          method: "POST",
+          credentials: 'include',
+          headers: {
+              "Accept": 'application/json', 
+              "Content-Type": "application/json",
+          },
+          //Sends the data in json format
+          body: user
+        });          
+        console.log(response);
+      }
+      
+    }
   },
   mounted() {
-    
+    this.checkConnected();
   }
 }
 </script>

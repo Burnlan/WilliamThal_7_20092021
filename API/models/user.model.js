@@ -36,7 +36,6 @@ User.findByMail = (userMail, result) => {
         //We check that we have a not-empty array
         //We also know that the res array will only contain one value at pos res[0]
         if (res.length) {
-            console.log("found user : "+res[0].firstname);
             result(null, res[0]);
             return;
         }

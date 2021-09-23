@@ -33,7 +33,9 @@ export default {
             if(response.ok){
                 //we store the user's data in local storage for ease of access.
                 let data = await response.json();
-                console.log(data);
+                localStorage.setItem("User", JSON.stringify(data));
+                //we refresh the page, which will automatically get the user to their feed and set up their session
+                location.reload();
             } else {
                 console.log(response);
             }
