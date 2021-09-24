@@ -1,13 +1,6 @@
 //we import multer
 const multer = require('multer');
 
-//we set our extensions
-const MIME_TYPES = {
-  'image/jpg': 'jpg',
-  'image/jpeg': 'jpg',
-  'image/png': 'png'
-};
-
 //we set where and how multer saves the files
 const storage = multer.diskStorage({
     //we store the files in the 'images' folder
@@ -16,9 +9,9 @@ const storage = multer.diskStorage({
   },
     //we generate the filename
     filename: (req, file, callback) => {
+        //we don"t allow spaces in files
         const name = file.originalname.split(' ').join('_');
-        const extension = MIME_TYPES[file.mimetype];
-        callback(null, name+"."+extension);
+        callback(null, name);
   }
 });
 

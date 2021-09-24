@@ -85,3 +85,8 @@ exports.disconnect = (req, res, next) => {
         res.status(200).send();
     });
 };
+
+exports.updateProfilePicture = (req, res, next) => {
+    console.log(req.file);
+    res.status(200).json({ "url": `${req.protocol}://${req.get('host')}/images/${req.file.filename}` })
+};
