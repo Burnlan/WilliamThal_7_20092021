@@ -47,24 +47,34 @@ exports.login = (req, res, next) => {
                             //the token will be valid for 24h
                             { expiresIn: "24h"}
                         )
-                    //we store the token in a secure cookie
-                    res.cookie("token", token, { httpOnly: true, secure: true });
-                    //now we send relevant data to be stored in the user's localstorage
+                    //we store the token in a secure cookie that's be used for authentification
+                    res.cookie("token", token, { httpOnly: true });
+                    //now we store relevant session info into a userData object
                     let userData = {
                         id: foundUser.id,
                         firstname: foundUser.firstname,
                         lastname: foundUser.lastname,
                         pictureUrl: foundUser.pictureUrl
                     }
-                    res.status(201).json(userData);
+                    //we pass userData in our user session
+                    req.session.userData = userData;
+                    //we save the new session data
+                    req.session.save();
+                    //we send a 200 ok status 
+                    res.status(200).send();
                 })
                 .catch(error => res.status(500).json({ error: error }));
         }
     });
 };
 
-exports.authenticate = (req, res, next) => {
-    //simple function that return a res.ok if a user passed the auth middleware.
-    res.status(200).send();
+exports.checkSession = (req, res, next) => {
+    //we check if a session has userData, if so it means that the user is connected.
+    console.log(req.session);
+    if(req.session.userData) {
+        //we send back the user data
+        res.status(200).json();
+    } else {
+        res.status(400).send();
+    }
 };
-

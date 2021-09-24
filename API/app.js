@@ -1,7 +1,9 @@
 
+//we import our modules
 const express = require('express');
 const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
+const sessions = require('express-session');
 
 //init app using express
 const app = express();
@@ -29,6 +31,18 @@ app.use((req, res, next) => {
 //let server access the images folder
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+//set up the sessions
+//js uses ms so we have to convert our 24h expiration time in ms
+const oneDay = 1000*60*60*24;
+
+//we set up the sessions parameter
+app.use(sessions({
+    //we give a random key
+    secret: "Uf148vnIdscfLSjeCbrjRx1eSOvVWb7cgdM8SzYB",
+    saveUninitialized: true,
+    cookie: { maxAge: oneDay },
+    resave: false
+}));
 
 //what the server does on request, aka our routes
 app.use('/api', userRoutes);

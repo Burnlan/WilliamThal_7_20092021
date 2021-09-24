@@ -31,11 +31,9 @@ export default {
                 body: JSON.stringify(this.logindata)
             })
             if(response.ok){
-                //we store the user's data in local storage for ease of access.
-                let data = await response.json();
-                localStorage.setItem("User", JSON.stringify(data));
-                //we refresh the page, which will automatically get the user to their feed and set up their session
-                location.reload();
+                console.log(response);
+                //we then call the checkConnected() function in App.vue
+                this.$root.$emit("loggedIn")
             } else {
                 console.log(response);
             }

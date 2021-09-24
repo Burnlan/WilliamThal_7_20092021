@@ -32,10 +32,9 @@ export default {
     methods: {
         //this function loads/unloads userdata depending on isConnected boolean
         setCurrentUser(){
-            //if a user isConnected, we load data from LS
+            //if a user isConnected
             if(this.isConnected) {
-                let userdata = localStorage.getItem("User");
-                userdata = JSON.parse(userdata);
+                
                 this.user = userdata;
             } else {
                 //if isConnected is false we empty our data
@@ -59,9 +58,9 @@ export default {
 
 <style lang="scss">
 header {
-     background: $clr-darkblue;
-     width: 100%;
-     height: 100px;
+    background: $clr-darkblue;
+    width: 100%;
+    height: 100px;
 }
 .user-info {
     color: white;

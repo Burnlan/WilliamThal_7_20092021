@@ -1,7 +1,7 @@
 <template>
 <div class="container-sm d-flex flex-column p-5">
   
-  <h1>Bienvenue</h1>
+  <h1>Bienvenue sur votre espace Groupomania</h1>
 
   <div class="btn-group con-selector" role="group">
     <button @click="select('signup')" class="btn btn-outline-primary" ref="signbtn">S'inscrire</button>
