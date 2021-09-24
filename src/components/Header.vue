@@ -3,6 +3,7 @@
         <div v-if="isConnected" class="container-md m-auto row h-100">
             <div class="col-6 d-flex h-100 align-items-center">
                 <div class="user-info">
+                    <img :href="'public/'+user.pictureUrl" alt="" class="profile-picture">
                     <h1>{{ user.firstname+" "+user.lastname }}</h1>
                 </div>
                 
@@ -51,6 +52,11 @@ header {
 .user-info {
     color: white;
     text-align: right;
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
 }
 
 .disconnectBtn {

@@ -1,10 +1,8 @@
 <template>
-    <div class="col-3 navbar align-items-start">
-        <ul class="navbar-nav text-end">
-            <li class="nav-item"><router-link to="/">Home</router-link> </li>
-            <li class="nav-item">Test</li>
-        </ul>
-    </div>
+<ul class="navbar-nav text-end">
+    <li class="nav-item">Test</li>
+    <li class="nav-item">Test</li>
+</ul>
 </template>
 
 <script>
@@ -15,7 +13,7 @@ export default {
 
 <style lang="scss">
 ul {
-    width: 100%
+    width: 100%;
 }
 
 li {
