@@ -70,10 +70,10 @@ exports.login = (req, res, next) => {
 
 exports.checkSession = (req, res, next) => {
     //we check if a session has userData, if so it means that the user is connected.
-    console.log(req.session);
+    console.log(req.session.userData);
     if(req.session.userData) {
         //we send back the user data
-        res.status(200).json();
+        res.status(200).json(req.session.userData);
     } else {
         res.status(400).send();
     }

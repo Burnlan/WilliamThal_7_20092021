@@ -17,42 +17,13 @@
 export default {
     name: "Header",
     props: {
-        isConnected: Boolean
+        user: Object
     },
     data() {
         return {
-            //by default, we have no user info
-            user: {
-                firstname: "",
-                lastname: "",
-                pictureUrl: ""
-            }
-        }
-    },
-    methods: {
-        //this function loads/unloads userdata depending on isConnected boolean
-        setCurrentUser(){
-            //if a user isConnected
-            if(this.isConnected) {
-                
-                this.user = userdata;
-            } else {
-                //if isConnected is false we empty our data
-                let blanckUser = {firstname: "", lastname:"", pictureUrl:""};
-                this.user = blanckUser;
-            }
-        }
-    },
-    //we watch for changes in the isConnected prop to load or not data from ls
-    watch: {
-        isConnected: function() {
-            this.setCurrentUser();
-        }
-    },
-    mounted() {
-        this.setCurrentUser();
-    }
 
+        }
+    }
 }
 </script>
 

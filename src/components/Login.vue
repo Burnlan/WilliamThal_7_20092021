@@ -31,9 +31,8 @@ export default {
                 body: JSON.stringify(this.logindata)
             })
             if(response.ok){
-                console.log(response);
-                //we then call the checkConnected() function in App.vue
-                this.$root.$emit("loggedIn")
+                //we reload the page to automatically set everything up
+                this.$router.go();
             } else {
                 console.log(response);
             }
