@@ -1,5 +1,5 @@
 <template>
-  <Header :user="user" />
+  <Header :user="user" :isConnected="isConnected" />
   
   <div class="container-fluid">
       <router-view/>
@@ -47,7 +47,10 @@ export default {
         let userData = await response.json();
         this.user = userData;
         //we then reroute the user to their feed
-        this.$router.replace("/feed");
+        this.$router.replace("/");
+      } else {
+        //if no user session could be retrieved, we redirect to the connection page
+        this.$router.replace("/connection");
       }
     },
 

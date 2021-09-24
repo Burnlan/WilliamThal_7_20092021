@@ -5,12 +5,12 @@ import Settings from '../views/Settings.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/connection',
     name: 'Connection',
     component: Connection
   },
   {
-    path: '/feed',
+    path: '/',
     name: 'Feed',
     component: Feed
   },

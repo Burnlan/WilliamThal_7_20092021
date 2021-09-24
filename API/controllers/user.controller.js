@@ -75,6 +75,10 @@ exports.checkSession = (req, res, next) => {
         //we send back the user data
         res.status(200).json(req.session.userData);
     } else {
-        res.status(400).send();
+        res.status(404).send();
     }
+};
+
+exports.disconnect = (req, res, next) => {
+
 };
