@@ -10,7 +10,7 @@ const auth = require('../middleware/auth.js');
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
 router.get('/checkSession', userCtrl.checkSession);
-router.get()
+router.get('/disconnect', userCtrl.disconnect);
 
 //we export everything
 module.exports = router;

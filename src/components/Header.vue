@@ -27,9 +27,16 @@ export default {
         }
     },
     methods: {
-        disconnect() {
+        async disconnect() {
             //to disconnect, we simply call the disconnect route, which will destroy our user session
-            console.log("disconnected");
+            let response = await fetch("http://localhost:3000/api/disconnect", {
+                method: "GET",
+                credentials: 'include'
+            })        
+            if(response.ok) {
+                //we then reload the page
+                this.$router.go()
+            }
         }
     }
 }

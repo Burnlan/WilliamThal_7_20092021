@@ -80,5 +80,8 @@ exports.checkSession = (req, res, next) => {
 };
 
 exports.disconnect = (req, res, next) => {
-
+    //this destroys the user session
+    req.session.destroy(() =>{
+        res.status(200).send();
+    });
 };
