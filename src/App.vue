@@ -33,12 +33,8 @@ export default {
     //it automatically redirect a user to their feed and load their data if they have a valid session
     async checkConnected() {
       let response = await fetch("http://localhost:3000/api/checkSession", {
-                method: "POST",
-                credentials: 'include',
-                headers: {
-                    "Accept": 'application/json', 
-                    "Content-Type": "application/json",
-                },
+                method: "GET",
+                credentials: 'include'
             })        
       if(response.ok){
         //if we get an ok from the server, we flip the app on using the "isConnected" boolean

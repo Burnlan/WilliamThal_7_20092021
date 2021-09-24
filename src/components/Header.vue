@@ -28,6 +28,7 @@ export default {
     },
     methods: {
         disconnect() {
+            //to disconnect, we simply call the disconnect route, which will destroy our user session
             console.log("disconnected");
         }
     }
@@ -47,6 +48,7 @@ header {
 
 .disconnectBtn {
     color: $clr-red;
+    text-align: right;
     i {
         font-size: 1rem;
         &:hover {

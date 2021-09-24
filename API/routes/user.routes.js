@@ -9,7 +9,8 @@ const auth = require('../middleware/auth.js');
 //we set the routes for signup and login
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
-router.post('/checkSession', userCtrl.checkSession);
+router.get('/checkSession', userCtrl.checkSession);
+router.get()
 
 //we export everything
 module.exports = router;
