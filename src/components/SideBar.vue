@@ -1,6 +1,8 @@
 <template>
-<ul class="navbar-nav text-end">
-    <li v-for="group in groups" :key="group.id"  class="nav-item">{{ group.name }}</li>
+<ul class="nav nav-pills nav-fill text-end">
+    <li v-for="group in groups" :key="group.id"  class="nav-item mt-1 mb-1 p-3">
+        <a href="" class="nav-link">{{ group.name }}</a>
+    </li>
 </ul>
 </template>
 
@@ -10,6 +12,9 @@ export default {
     props: {
         groups: Array,
     },
+    methods: {
+
+    }
 }
 </script>
 
@@ -21,8 +26,9 @@ ul {
 li {
     text-align: end;
     padding: 10px;
-    color: white;
-    background-color: $clr-blue;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 

@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="mb-3">
         <div v-if="isConnected" class="container-md m-auto row h-100">
             <div class="col-6 d-flex h-100 align-items-center">
                 <div class="user-info">
