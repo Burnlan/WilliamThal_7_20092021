@@ -1,13 +1,15 @@
 <template>
 <ul class="navbar-nav text-end">
-    <li class="nav-item">Test</li>
-    <li class="nav-item">Test</li>
+    <li v-for="group in groups" :key="group.id"  class="nav-item">{{ group.name }}</li>
 </ul>
 </template>
 
 <script>
 export default {
-
+    name: "SideBar",
+    props: {
+        groups: Array,
+    },
 }
 </script>
 

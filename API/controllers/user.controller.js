@@ -71,7 +71,6 @@ exports.login = (req, res, next) => {
 
 exports.checkSession = (req, res, next) => {
     //we check if a session has userData, if so it means that the user is connected.
-    console.log(req.session.userData);
     if(req.session.userData) {
         //we send back the user data
         res.status(200).json(req.session.userData);
@@ -88,6 +87,16 @@ exports.disconnect = (req, res, next) => {
 };
 
 exports.updateProfilePicture = (req, res, next) => {
-    console.log(req.file);
     res.status(200).json({ "url": `${req.protocol}://${req.get('host')}/images/${req.file.filename}` })
 };
+
+exports.getGroups = (req, res, next) => {
+    //we use the id stored in the session
+    let userId = req.session.userData.id;
+    console.log("userId : "+userId);
+    //we call the getGroups method that returns an array with the group ids
+    User.getGroups(userId, (err, groups) => {
+        //we simply send back the array filed with group objects to the client
+        res.status(200).json(groups);
+    });
+}

@@ -1,3 +1,4 @@
+const { stringifyQuery } = require("vue-router");
 const sql = require("./db.js");
 
 //We create a constructor
@@ -42,6 +43,30 @@ User.findByMail = (userMail, result) => {
         //if the request is ok but hasn't found anything.
         result({ kind: "not_found" }, null);
     });
+};
+
+//this method returns all the group a user is in
+User.getGroups = (userId, result) => {
+    //we select all groups (name and group_id) for a given user_id
+    const query = `SELECT name, id FROM groups INNER JOIN usergroups on groups.id=usergroups.group_id WHERE usergroups.user_id=${userId}`;
+    sql.query(query, (err, res) => {
+        //if there is an error in the request
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        //We check that we have a not-empty array
+        //We return our array as a resonse
+        if (res.length) {
+            console.log(res)
+            result(null, res);
+            return;
+        }
+        //if the request is ok but hasn't found anything.
+        result({ kind: "not_found" }, null);
+    });
+
 };
 
 module.exports = User;
