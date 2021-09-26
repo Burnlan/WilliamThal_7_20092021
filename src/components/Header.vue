@@ -3,10 +3,9 @@
         <div v-if="isConnected" class="container-md m-auto row h-100">
             <div class="col-6 d-flex h-100 align-items-center">
                 <div class="user-info">
-                    <img :href="'http://localhost:3000/'+user.pictureUrl" alt="user picture" class="profile-picture">
+                    <img src="" alt="user picture" class="profile-picture">
                     <router-link to="/settings">
-                        
-                        <img href="http://localhost:3000/images/favicon.png" alt="">
+                    To settings
                     </router-link>
                     <h1>{{ user.firstname+" "+user.lastname }}</h1>
                 </div>
@@ -28,7 +27,7 @@ export default {
     },
     data() {
         return {
-
+            picture: ""
         }
     },
     methods: {
@@ -42,7 +41,7 @@ export default {
                 //we then reload the page
                 this.$router.go()
             }
-        }
+        },
     }
 }
 </script>

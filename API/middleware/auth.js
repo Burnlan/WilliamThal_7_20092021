@@ -20,7 +20,6 @@ module.exports = (req, res, next) => {
         }
         else {
             //if everything is good we can proceed to the next function in route
-            console.log("all is good");
             next();
         }
     } catch {

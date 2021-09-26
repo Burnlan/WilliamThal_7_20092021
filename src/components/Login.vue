@@ -5,6 +5,9 @@
         <label for="pwdInput" class="form-label">Mot de passe</label>
         <input type="password" class="form-control" id="pwdInput" v-model="logindata.password">
         <button @click="login" class="btn btn-primary mt-3 align-self-end">Se connecter</button>
+
+        <p v-if="failed" class="warning">Identifiants invalides</p>
+
     </form>
 </template>
 
@@ -14,7 +17,8 @@ export default {
     data() {
         return {
             //this is the object that will create a new user, we get it from our form using vue model
-            logindata: { email: "", password: "" }
+            logindata: { email: "", password: "" },
+            failed: false
         }
     },
     methods: {
@@ -35,12 +39,16 @@ export default {
                 this.$router.go();
             } else {
                 console.log(response);
+                this.failed = true;
             }
         }
     }
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.warning{
+    color: $clr-red;
+    text-align: center;
+}
 </style>

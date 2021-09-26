@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
   },
     //we generate the filename
     filename: (req, file, callback) => {
-        //we don"t allow spaces in files
+        //we don't allow spaces in files
         const name = file.originalname.split(' ').join('_');
         callback(null, name);
   }

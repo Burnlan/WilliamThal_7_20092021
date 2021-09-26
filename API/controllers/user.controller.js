@@ -29,6 +29,7 @@ exports.login = (req, res, next) => {
     User.findByMail(req.body.email, (err, foundUser) => {
         if (err) {
             //if it's unsuccessfull
+            return res.status(401).json({ error: "No match" })
         } else {
             //if the user exists, it's returned in an object
             //we use bcrypt to check if the request used the right password
