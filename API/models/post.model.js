@@ -9,3 +9,10 @@ const Post = function(post) {
     this.date_updated = null;
     this.date_deleted = null;
 };
+
+
+
+//we get all posts in a given group
+Post.findByGroupId = (groupId, result) => {
+    
+};

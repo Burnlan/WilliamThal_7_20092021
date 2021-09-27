@@ -39,10 +39,22 @@ export default {
                 //we store this group array in our groups data
                 this.groups = response;
             }
+        },
+        //this method retrieves the feed data to display
+        async getFeed() {
+            //we get the groupid in the url
+            const groupId = this.$route.query.groupid;
+            console.log(groupId)
         }
     },
     mounted() {
         this.displayGroups();
+    },
+    //we watch for changes in the url to call our getFeed function
+    watch: {
+        $route () {
+            this.getFeed();
+        }
     }
 }
 </script>
