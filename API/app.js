@@ -17,6 +17,7 @@ app.use(cookieParser());
 
 //routes
 const userRoutes = require('./routes/user.routes.js');
+const feedRoutes = require('./routes/feed.routes.js');
 const path = require('path');
 
 //allow CORS
@@ -46,5 +47,6 @@ app.use(sessions({
 
 //what the server does on request, aka our routes
 app.use('/api', userRoutes);
+app.use('/api', feedRoutes);
 
 module.exports = app;

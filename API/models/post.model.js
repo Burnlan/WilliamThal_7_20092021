@@ -10,9 +10,23 @@ const Post = function(post) {
     this.date_deleted = null;
 };
 
+//we create a new post
+Post.create = (newPost, result) => {
+    console.log("function called");
+    sql.query("INSERT INTO posts SET ?", newPost, (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          return;
+        }
+        console.log("created post: ", { id: res.insertId, ...newPost });
+      });
+};
 
 
 //we get all posts in a given group
 Post.findByGroupId = (groupId, result) => {
-    
+
 };
+
+
+module.exports = Post;

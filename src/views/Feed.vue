@@ -5,10 +5,8 @@
         <SideBar :groups="groups"/>
     </div>
     <div class="col-7">
-        <form class="new-post">
-            <textarea id="newPost" maxlength="20000" placeholder="Partagez avec vos collègues !" required></textarea>
-            <button type="submit" class="btn btn-primary">Publier</button>
-        </form>
+        <PostForm v-if="$route.query.groupid" />
+        <div v-else class="default"><h2>Aucun groupe n'est selectionné</h2></div>
         <Post />
     </div>
 </div>
@@ -17,12 +15,14 @@
 <script>
 import SideBar from '@/components/SideBar.vue'
 import Post from '@/components/Post.vue'
+import PostForm from '@/components/PostForm.vue'
 
 export default {
     name: "Feed",
     components: {
         SideBar,
-        Post
+        Post,
+        PostForm
     },
     data() {
         return {
@@ -48,7 +48,7 @@ export default {
             //we get the groupid in the url
             const groupId = this.$route.query.groupid;
             console.log(groupId)
-        }
+        },
     },
     mounted() {
         this.displayGroups();
