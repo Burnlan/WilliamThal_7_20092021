@@ -93,7 +93,6 @@ exports.updateProfilePicture = (req, res, next) => {
 exports.getGroups = (req, res, next) => {
     //we use the id stored in the session
     let userId = req.session.userData.id;
-    console.log("userId : "+userId);
     //we call the getGroups method that returns an array with the group ids
     User.getGroups(userId, (err, groups) => {
         //we simply send back the array filed with group objects to the client

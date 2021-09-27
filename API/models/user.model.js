@@ -59,7 +59,6 @@ User.getGroups = (userId, result) => {
         //We check that we have a not-empty array
         //We return our array as a resonse
         if (res.length) {
-            console.log(res)
             result(null, res);
             return;
         }
