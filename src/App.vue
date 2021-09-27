@@ -63,7 +63,7 @@ h1, h2, h3 {
   font: $latoBold;
 }
 
-p, a, li, label {
+p, a, li, label, textarea {
   font: $latoReg;
 }
 

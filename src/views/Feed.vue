@@ -5,7 +5,10 @@
         <SideBar :groups="groups"/>
     </div>
     <div class="col-7">
-        <div class="new-post">Écrivez ici un nouveau poste</div>
+        <form class="new-post">
+            <textarea id="newPost" maxlength="20000" placeholder="Partagez avec vos collègues !" required></textarea>
+            <button type="submit" class="btn btn-primary">Publier</button>
+        </form>
         <Post />
     </div>
 </div>
@@ -59,6 +62,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+#newPost {
+    width: 100%;
+    height: 2rem;
+    resize: none;
+    &:focus {
+        height: 20rem;
+    }
+}
 </style>

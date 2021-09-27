@@ -1,5 +1,5 @@
 <template>
-<div class="OP mt-3">test</div>
+<div>test</div>
 </template>
 
 <script>
