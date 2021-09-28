@@ -7,7 +7,7 @@
     <div class="col-7">
         <PostForm v-if="$route.query.groupid" />
         <div v-else class="default"><h2>Aucun groupe n'est selectionné</h2></div>
-        <Post />
+        <Post v-for="post in posts" :key="post.id" :post="post"/>
     </div>
 </div>
 </template>
@@ -26,7 +26,8 @@ export default {
     },
     data() {
         return {
-            groups: []
+            groups: [],
+            posts: []
         }
     },
     methods: {
@@ -58,8 +59,8 @@ export default {
                 body: JSON.stringify({ groupId: groupId })
             })
             if(response.ok) {
-                response = await response.json();
-                console.log(response);
+                const posts = await response.json();
+                this.posts = posts;
             }
         },
     },

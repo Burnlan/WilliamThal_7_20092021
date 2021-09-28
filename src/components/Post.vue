@@ -1,18 +1,23 @@
 <template>
-<div>test</div>
+<div class="OP">
+    <h2>{{ post.user_id }}</h2>
+    <p>{{ post.content }}</p>
+</div>
 </template>
 
 <script>
 export default {
-    name: "Post"
+    name: "Post",
+    props: {
+        post: Object,
+    },
 }
 </script>
 
 <style lang="scss">
 .OP {
     width: 100%;
-    height: 250px;
-    background-color: $clr-pink;
+    color: black;
 }
 
 
