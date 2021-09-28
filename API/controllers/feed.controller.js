@@ -12,3 +12,10 @@ exports.createPost = (req, res, next) => {
         .then(() => res.status(201).json({ message: "New post created"}))
         .catch(error => res.status(400).json({error}))
 };
+
+exports.getPosts = (req, res, next) => {
+    const groupId = req.body.groupId;
+    Post.findByGroupId(groupId, (err, posts) => {
+        res.status(200).json(posts);
+    })
+};

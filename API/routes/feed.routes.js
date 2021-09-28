@@ -9,6 +9,7 @@ const multer = require('../middleware/multer-config.js');
 
 //we set the routes for signup and login
 router.post('/createpost', auth, feedCtrl.createPost);
+router.post('/getposts', auth, feedCtrl.getPosts);
 
 
 //we export everything

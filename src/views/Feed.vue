@@ -47,7 +47,20 @@ export default {
         async getFeed() {
             //we get the groupid in the url
             const groupId = this.$route.query.groupid;
-            console.log(groupId)
+            let response = await fetch("http://localhost:3000/api/getposts", {
+                method: "POST",
+                credentials: 'include',
+                headers: {
+                    "Accept": 'application/json', 
+                    "Content-Type": "application/json",
+                },
+                //Sends the data in json format
+                body: JSON.stringify({ groupId: groupId })
+            })
+            if(response.ok) {
+                response = await response.json();
+                console.log(response);
+            }
         },
     },
     mounted() {

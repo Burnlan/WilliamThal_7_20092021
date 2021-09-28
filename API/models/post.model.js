@@ -25,7 +25,23 @@ Post.create = (newPost, result) => {
 
 //we get all posts in a given group
 Post.findByGroupId = (groupId, result) => {
-
+  sql.query(`SELECT * FROM posts WHERE group_id="${groupId}"`, (err, res) => {
+    //if there is an error in the request
+    if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+    }
+    //We check that we have a not-empty array
+    if (res.length) {
+    //we return an aray containing all the posts
+      console.log(res);
+      result(null, res);
+      return;
+    }
+    //if the request is ok but hasn't found anything.
+    result({ kind: "not_found" }, null);
+});
 };
 
 

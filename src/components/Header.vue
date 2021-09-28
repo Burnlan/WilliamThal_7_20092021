@@ -3,7 +3,7 @@
         <div v-if="isConnected" class="container-md m-auto row h-100">
             <div class="col-6 d-flex h-100 align-items-center">
                 <div class="user-info">
-                    <img src="" alt="user picture" class="profile-picture">
+                    <img :src="'http://localhost:8080/favicon.png'" alt="user picture" class="profile-picture">
                     <router-link to="/settings">
                     To settings
                     </router-link>
