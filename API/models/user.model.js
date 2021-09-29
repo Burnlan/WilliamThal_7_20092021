@@ -65,7 +65,6 @@ User.getGroups = (userId, result) => {
         //if the request is ok but hasn't found anything.
         result({ kind: "not_found" }, null);
     });
-
 };
 
 module.exports = User;

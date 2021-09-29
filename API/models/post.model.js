@@ -16,16 +16,19 @@ Post.create = (newPost, result) => {
     sql.query("INSERT INTO posts SET ?", newPost, (err, res) => {
         if (err) {
           console.log("error: ", err);
+          result(err, null);
           return;
         }
         console.log("created post: ", { id: res.insertId, ...newPost });
+        result(null, res);
+        return;
       });
 };
 
 
-//we get all posts in a given group
+//we get all not-archived posts in a given group
 Post.findByGroupId = (groupId, result) => {
-  sql.query(`SELECT * FROM posts WHERE group_id="${groupId}"`, (err, res) => {
+  sql.query(`SELECT * FROM posts WHERE group_id="${groupId}" AND date_deleted IS NULL`, (err, res) => {
     //if there is an error in the request
     if (err) {
         console.log("error: ", err);
@@ -35,14 +38,28 @@ Post.findByGroupId = (groupId, result) => {
     //We check that we have a not-empty array
     if (res.length) {
     //we return an aray containing all the posts
-      console.log(res);
       result(null, res);
       return;
     }
     //if the request is ok but hasn't found anything.
     result({ kind: "not_found" }, null);
-});
+  });
 };
 
+//users can't delete post, they can only "archive" them
+Post.archive = (postId, result) => {
+  const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  sql.query(`UPDATE posts SET date_deleted='${timestamp}' WHERE posts.id=${postId}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null)
+      return;
+    }
+    //If everything is alright we have nothing more to do
+    console.log("archived post");
+    result(null, res);
+    return;
+  });
+};
 
 module.exports = Post;

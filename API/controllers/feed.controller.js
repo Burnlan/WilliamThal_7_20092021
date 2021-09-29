@@ -8,9 +8,9 @@ exports.createPost = (req, res, next) => {
         group_id: req.body.groupId,
         content: req.body.content
     })
-    Post.create(newPost)
-        .then(() => res.status(201).json({ message: "New post created"}))
-        .catch(error => res.status(400).json({error}))
+    Post.create(newPost, (err, result) => {
+        res.status(201).json({ message: "New post created"})
+    })
 };
 
 exports.getPosts = (req, res, next) => {
@@ -19,3 +19,10 @@ exports.getPosts = (req, res, next) => {
         res.status(200).json(posts);
     })
 };
+
+exports.archivePost = (req, res, next) => {
+    const postId = req.body.postId;
+    Post.archive(postId, (err, result) => {
+        res.status(200).json({message: "Post archived"})
+    })
+}
