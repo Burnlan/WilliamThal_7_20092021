@@ -24,7 +24,10 @@ export default {
                 //Sends the data in json format
                 body: JSON.stringify({ postId: postId })
             })
-            console.log(response);
+            if(response.ok) {
+                //if the post was archived, we reload the feed
+                this.$emit("archive");
+            }
         }
     }
 }
