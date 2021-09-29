@@ -1,18 +1,18 @@
 <template>
-    <header class="mb-3">
+    <header class="mb-3 p-3">
         <div v-if="isConnected" class="container-md m-auto row h-100">
             <div class="col-6 d-flex h-100 align-items-center">
-                <div class="user-info">
+                <div class="user-info d-flex align-items-center">
+                    <div class="profilBtns d-flex flex-column">
+                        <span class="disconnect"><i class="far fa-times-circle" title="Se déconnecter" @click="disconnect"></i></span>
+                        <router-link to="/settings" class="settings"><i class="fas fa-cog mt-2" title="Paramètres"></i></router-link>
+                    </div>
                     <img :src="'http://localhost:8080/favicon.png'" alt="user picture" class="profile-picture">
-                    <router-link to="/settings">
-                    To settings
-                    </router-link>
-                    <h1>{{ user.firstname+" "+user.lastname }}</h1>
+                    <h3><span class="firstname">{{ user.firstname }}</span> <br> {{user.lastname }}</h3>
                 </div>
-                
             </div>
             <div class="col-6">
-                <div class="disconnectBtn"><i class="far fa-times-circle" title="Se déconnecter" @click="disconnect"></i></div>
+                <router-link to="/"><h1>GROUPOMANIA</h1></router-link>
             </div>
         </div>
     </header>
@@ -51,25 +51,43 @@ header {
     background: $clr-darkblue;
     width: 100%;
     height: 100px;
+    a {
+        text-decoration: none;
+    }
+    h1 {
+        color: white;
+        font-size: 3rem;
+        text-decoration: none;
+    }
 }
 .user-info {
     color: white;
-    text-align: right;
+    h3 {
+        align-self: end;
+        .firstname {
+            font-weight: 400;
+        }
+    }
 }
 
 .profile-picture {
     width: 80px;
-    height: 80px;
 }
 
-.disconnectBtn {
-    color: $clr-red;
-    text-align: right;
+.profilBtns {
+    align-self: start;
+    .disconnect {
+        color: $clr-red;
+    }
+    .settings {
+        color: white;
+    }
     i {
         font-size: 1rem;
         &:hover {
             cursor: pointer;
         }
+        
     }
     
 }

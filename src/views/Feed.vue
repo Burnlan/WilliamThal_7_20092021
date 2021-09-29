@@ -6,7 +6,7 @@
     </div>
     <div class="col-7">
         <PostForm v-if="$route.query.groupid" />
-        <div v-else class="default"><h2>Aucun groupe n'est selectionné</h2></div>
+        <div v-else class="default p-5"><h2>Aucun groupe n'est selectionné</h2></div>
         <Post v-for="post in posts" :key="post.id" :post="post"/>
     </div>
 </div>
@@ -83,6 +83,12 @@ export default {
     resize: none;
     &:focus {
         height: 20rem;
+    }
+}
+.default {
+    text-align: center;
+    h2 {
+        font-size: 2rem;
     }
 }
 </style>
