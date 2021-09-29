@@ -77,14 +77,6 @@ export default {
 </script>
 
 <style lang="scss">
-#newPost {
-    width: 100%;
-    height: 2rem;
-    resize: none;
-    &:focus {
-        height: 20rem;
-    }
-}
 .default {
     text-align: center;
     h2 {

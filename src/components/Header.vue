@@ -1,7 +1,8 @@
 <template>
     <header class="mb-3 p-3">
-        <div v-if="isConnected" class="container-md m-auto row h-100">
-            <div class="col-6 d-flex h-100 align-items-center">
+        <div v-if="isConnected" class="container-fluid m-auto row h-100">
+            <div class="col-2"></div>
+            <div class="col-4 d-flex h-100 align-items-center">
                 <div class="user-info d-flex align-items-center">
                     <div class="profilBtns d-flex flex-column">
                         <span class="disconnect"><i class="far fa-times-circle" title="Se déconnecter" @click="disconnect"></i></span>
@@ -11,9 +12,10 @@
                     <h3><span class="firstname">{{ user.firstname }}</span> <br> {{user.lastname }}</h3>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <router-link to="/"><h1>GROUPOMANIA</h1></router-link>
             </div>
+            <div class="col-2"></div>
         </div>
     </header>
 </template>
@@ -58,6 +60,7 @@ header {
         color: white;
         font-size: 3rem;
         text-decoration: none;
+        text-align: right;
     }
 }
 .user-info {

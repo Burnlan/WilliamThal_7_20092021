@@ -35,6 +35,7 @@ ul {
 li {
     text-align: end;
     padding: 10px;
+    width: 100%;
     &:hover {
         cursor: pointer;
     }

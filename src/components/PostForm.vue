@@ -1,7 +1,7 @@
 <template>
-    <form class="d-flex flex-column new-post">
-        <textarea id="newPost" maxlength="20000" placeholder="Partagez avec vos collègues !" required v-model="content"></textarea>
-        <button type="submit" @click="createPost" class="btn btn-primary m-3">Partager</button>
+    <form class="d-flex flex-column">
+        <textarea class="new-post mb-3" maxlength="20000" placeholder="Partagez avec vos collègues !" required v-model="content" ref="textArea"></textarea>
+        <button type="submit" @click="createPost" class="btn btn-primary mb-3" :class="{ disabled: !canPost }">Partager</button>
     </form>
 </template>
 
@@ -10,11 +10,12 @@ export default {
     name: "PostForm",
     data() {
         return {
-            content: ""
+            content: "",
+            canPost: false
         }
     },
     methods: {
-                //this method creates a new post
+        //this method creates a new post
         async createPost(e){
             e.preventDefault();
             const body = {
@@ -33,10 +34,42 @@ export default {
             })
             console.log(response);
         }
+    },
+    watch: {
+        content() {
+            if(this.content){
+                this.canPost = true;
+            } else {
+                this.canPost = false;
+            }
+        }
+    },
+    mounted() {
+        //we listen for focus change on textarea
+        this.$refs.textArea.addEventListener("focusin", (e) => {
+            //we add the "active" class
+            e.target.classList.add("active");
+        })
+        this.$refs.textArea.addEventListener("focusout", (e) => {
+            //We remove the "active" class
+            e.target.classList.remove("active");
+        })
     }
 }
 </script>
 
-<style>
+<style lang="scss">
+form {
+    .new-post {
+    width: 100%;
+    height: 2rem;
+    resize: none;
+    }
+    .active {
+        height: 20rem;
+    }
+}
+
+
 
 </style>
