@@ -1,6 +1,6 @@
 <template>
     <form class="d-flex flex-column">
-        <textarea class="new-post mb-3" maxlength="20000" placeholder="Partagez avec vos collègues !" required v-model="content" ref="textArea"></textarea>
+        <textarea class="new-post mb-1" maxlength="20000" placeholder="Partagez avec vos collègues !" required v-model="content" ref="textArea"></textarea>
         <button type="submit" @click="createPost" class="btn btn-primary mb-3" :class="{ disabled: !canPost }">Partager</button>
     </form>
 </template>
@@ -32,7 +32,12 @@ export default {
                 //Sends the data in json format
                 body: JSON.stringify(body)
             })
-            console.log(response);
+            if(response.ok) {
+                //if we posted we refresh the feed
+                this.$emit("posted");
+                //we also wipe the form
+                this.content = "";
+            }
         }
     },
     watch: {
@@ -61,9 +66,10 @@ export default {
 <style lang="scss">
 form {
     .new-post {
-    width: 100%;
-    height: 2rem;
-    resize: none;
+        width: 100%;
+        height: 2rem;
+        resize: none;
+        transition: height 0.5s ease-in-out;
     }
     .active {
         height: 20rem;
