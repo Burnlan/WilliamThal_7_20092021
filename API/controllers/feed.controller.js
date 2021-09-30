@@ -39,3 +39,10 @@ exports.reply = (req, res, next) => {
         res.status(200).json({message: "Replied"})
     })
 };
+
+exports.getReplies = (req, res, next) => {
+    const postId = req.body.postId;
+    Reply.getByPost(postId, (err, result) => {
+        res.status(200).json(result);
+    });
+};

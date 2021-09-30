@@ -7,20 +7,28 @@
         <button @click="getReplies(post.id)" class="repliesBtn" value="Afficher les réponses">Afficher les réponses <i class="fas fa-arrow-alt-circle-down"></i></button>
     </div>
     <ReplyForm :postId="post.id"/>
+    <Replies v-for="reply in replies" :key="reply.id" :reply="reply"/>
 </div>
 
 </template>
 
 <script>
 import ReplyForm from '@/components/ReplyForm.vue'
+import Replies from '@/components/Replies.vue'
 
 export default {
     name: "Post",
     components: {
         ReplyForm,
+        Replies
     },
     props: {
         post: Object,
+    },
+    data() {
+        return {
+            replies: []
+        }
     },
     methods: {
         async archive(postId) {
@@ -52,7 +60,8 @@ export default {
             })
             if(response.ok) {
                 //if the post was archived, we reload the feed
-                console.log("we got it")
+                this.replies = await response.json();
+                console.log(this.replies);
             }
         }
     }
