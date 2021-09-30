@@ -4,10 +4,12 @@
         <h2>{{ post.lastname +" "+ post.firstname }}</h2>
         <p>{{ post.content }}</p>
         <button @click="archive(post.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
-        <button @click="getReplies(post.id)" class="repliesBtn" value="Afficher les réponses">Afficher les réponses <i class="fas fa-arrow-alt-circle-down"></i></button>
+        <button v-if="!showReplies" @click="getReplies(post.id)" class="repliesBtn" value="Afficher les réponses">Afficher les réponses <i class="fas fa-arrow-alt-circle-down"></i></button>
+        <button v-else @click="hideReplies" class="repliesBtn" value="Masquer les réponses">Masquer les réponses <i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
-    <ReplyForm :postId="post.id"/>
+    <ReplyForm :postId="post.id" v-on:replied="getReplies(post.id)"/>
     <Replies v-for="reply in replies" :key="reply.id" :reply="reply"/>
+    <div v-if="noReplies" class="no-replies p-1"><p>Il n'existe aucune réponse pour cette publication</p></div>
 </div>
 
 </template>
@@ -27,6 +29,8 @@ export default {
     },
     data() {
         return {
+            noReplies: false,
+            showReplies: false,
             replies: []
         }
     },
@@ -59,10 +63,19 @@ export default {
                 body: JSON.stringify({ postId: postId })
             })
             if(response.ok) {
-                //if the post was archived, we reload the feed
+                //We load the replies in our replies array and set that we are showing replies
                 this.replies = await response.json();
-                console.log(this.replies);
+                this.showReplies = true;
+                //if we didn't get anything, then we trigger the "noReplies" sqtatus to be true
+                if(this.replies == null) {
+                    this.noReplies = true;
+                }
             }
+        },
+        hideReplies() {
+            this.noReplies = false;
+            this.showReplies = false;
+            this.replies = [];
         }
     }
 }
@@ -100,6 +113,8 @@ export default {
         background-color: $clr-teal;
     }
 }
-
+.no-replies {
+    color: $clr-red;
+}
 
 </style>
