@@ -25,4 +25,4 @@ exports.archivePost = (req, res, next) => {
     Post.archive(postId, (err, result) => {
         res.status(200).json({message: "Post archived"})
     })
-}
+};

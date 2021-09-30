@@ -38,6 +38,4 @@ export default {
     width: 100%;
     color: black;
 }
-
-
 </style>
