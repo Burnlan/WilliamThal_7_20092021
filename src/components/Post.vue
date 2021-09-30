@@ -1,10 +1,14 @@
 <template>
-<div class="OP mt-5 p-2">
-    <h2>{{ post.lastname +" "+ post.firstname }}</h2>
-    <p>{{ post.content }}</p>
-    <button @click="archive(post.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+<div class="post-and-replies">
+    <div class="OP mt-5 p-2">
+        <h2>{{ post.lastname +" "+ post.firstname }}</h2>
+        <p>{{ post.content }}</p>
+        <button @click="archive(post.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+        <button @click="getReplies(post.id)" class="repliesBtn" value="Afficher les réponses">Afficher les réponses <i class="fas fa-arrow-alt-circle-down"></i></button>
+    </div>
+    <ReplyForm :postId="post.id"/>
 </div>
-<ReplyForm />
+
 </template>
 
 <script>
@@ -34,6 +38,22 @@ export default {
                 //if the post was archived, we reload the feed
                 this.$emit("archive");
             }
+        },
+        async getReplies(postId) {
+            let response = await fetch("http://localhost:3000/api/getreplies", {
+                method: "POST",
+                credentials: 'include',
+                headers: {
+                    "Accept": 'application/json', 
+                    "Content-Type": "application/json",
+                },
+                //Sends the data in json format
+                body: JSON.stringify({ postId: postId })
+            })
+            if(response.ok) {
+                //if the post was archived, we reload the feed
+                console.log("we got it")
+            }
         }
     }
 }
@@ -56,6 +76,19 @@ export default {
     transition: color 0.2s ease-in-out;
     &:hover {
         color: $clr-red;
+    }
+}
+.repliesBtn {
+    position: absolute;
+    bottom : 0;
+    right: 0;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        color: white;
+        background-color: $clr-teal;
     }
 }
 

@@ -4,7 +4,7 @@ const sql = require("./db.js");
 const Reply = function(reply) {
     this.user_id = reply.user_id;
     this.post_id = reply.post_id;
-    this.content = post.content;
+    this.content = reply.content;
     this.date_created = new Date().toISOString().slice(0, 19).replace('T', ' '); //this code gives us mysql date format
     this.date_updated = null;
     this.date_deleted = null;
@@ -24,3 +24,6 @@ Reply.create = (newReply, result) => {
         return;
       });
 };
+
+
+module.exports = Reply;

@@ -11,12 +11,40 @@
 <script>
 export default {
     name: "ReplyForm",
-        data() {
-            return {
-                content: "",
-                canReply: false
+    props: {
+        postId: Number
+    },
+    data() {
+        return {
+            content: "",
+            canReply: false
+        }
+    },
+    methods : {
+        async createReply(e){
+            e.preventDefault();
+            const body = {
+                content: this.content,
+                postId: this.postId
             }
-        },
+            let response = await fetch("http://localhost:3000/api/reply", {
+                method: "POST",
+                credentials: 'include',
+                headers: {
+                    "Accept": 'application/json', 
+                    "Content-Type": "application/json",
+                },
+                //Sends the data in json format
+                body: JSON.stringify(body)
+            })
+            if(response.ok) {
+                //if we posted we refresh the feed
+                this.$emit("replied");
+                //we also wipe the form
+                this.content = "";
+            }
+        }
+    },
     watch: {
         content() {
             if(this.content){
@@ -40,6 +68,9 @@ form {
     resize: none;
     width: calc(100% - 2rem);
     border: none;
+    &:focus {
+        outline: none;
+    }
 }
 .send{ 
     position: absolute;

@@ -11,7 +11,7 @@ const multer = require('../middleware/multer-config.js');
 router.post('/createpost', auth, feedCtrl.createPost);
 router.post('/getposts', auth, feedCtrl.getPosts);
 router.post('/archivepost', auth, feedCtrl.archivePost);
-
+router.post('/reply', auth, feedCtrl.reply);
 
 //we export everything
 module.exports = router;
