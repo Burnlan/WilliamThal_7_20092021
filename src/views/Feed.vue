@@ -61,6 +61,7 @@ export default {
             if(response.ok) {
                 const posts = await response.json();
                 this.posts = posts;
+                console.log(this.posts);
             }
         },
     },

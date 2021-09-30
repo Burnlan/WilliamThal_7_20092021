@@ -1,0 +1,51 @@
+<template>
+    <form class="d-flex mt-2">
+        <textarea class="new-reply mb-1" maxlength="20000" placeholder="Rédigez un commentaire" required v-model="content" ref="textArea">  
+        </textarea>
+        <button type="submit" @click="createReply" class="btn btn-primary mb-3 p-0 send" :class="{ disabled: !canReply }">
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </button>    
+    </form>
+</template>
+
+<script>
+export default {
+    name: "ReplyForm",
+        data() {
+            return {
+                content: "",
+                canReply: false
+            }
+        },
+    watch: {
+        content() {
+            if(this.content){
+                this.canReply = true;
+            } else {
+                this.canReply = false;
+            }
+        }
+    },
+}
+</script>
+
+<style lang="scss" scoped>
+form {
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid $clr-blue;
+}
+.new-reply {
+    height: 2rem;
+    resize: none;
+    width: calc(100% - 2rem);
+    border: none;
+}
+.send{ 
+    position: absolute;
+    top: 100;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+}
+</style>

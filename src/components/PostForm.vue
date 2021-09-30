@@ -1,7 +1,7 @@
 <template>
     <form class="d-flex flex-column">
         <textarea class="new-post mb-1" maxlength="20000" placeholder="Partagez avec vos collègues !" required v-model="content" ref="textArea"></textarea>
-        <button type="submit" @click="createPost" class="btn btn-primary mb-3" :class="{ disabled: !canPost }">Partager</button>
+        <button type="submit" @click="createPost" class="btn btn-primary" :class="{ disabled: !canPost }">Partager</button>
     </form>
 </template>
 

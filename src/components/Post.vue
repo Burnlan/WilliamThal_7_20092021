@@ -1,14 +1,20 @@
 <template>
-<div class="OP">
-    <h2>{{ post.user_id }}</h2>
+<div class="OP mt-5 p-2">
+    <h2>{{ post.lastname +" "+ post.firstname }}</h2>
     <p>{{ post.content }}</p>
-    <button @click="archive(post.id)">archive post</button>
+    <button @click="archive(post.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
 </div>
+<ReplyForm />
 </template>
 
 <script>
+import ReplyForm from '@/components/ReplyForm.vue'
+
 export default {
     name: "Post",
+    components: {
+        ReplyForm,
+    },
     props: {
         post: Object,
     },
@@ -37,5 +43,21 @@ export default {
 .OP {
     width: 100%;
     color: black;
+    border: 2px solid $clr-teal;
+    border-radius: 10px;
+    position: relative;
 }
+.deleteBtn {
+    position: absolute;
+    top : 0;
+    right: 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    transition: color 0.2s ease-in-out;
+    &:hover {
+        color: $clr-red;
+    }
+}
+
+
 </style>
