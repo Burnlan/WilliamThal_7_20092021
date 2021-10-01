@@ -1,10 +1,10 @@
 <template>
 
-<div class="row">
-    <div class="col-2 p-0">
+<div class="row flex-column flex-md-row">
+    <div class="col-md-2 p-0">
         <SideBar :groups="groups"/>
     </div>
-    <div class="col-7">
+    <div class="col-md-7">
         <PostForm v-if="$route.query.groupid" v-on:posted="getFeed"/>
         <div v-else class="default p-5"><h2>Aucun groupe n'est selectionné</h2></div>
         <Post v-for="post in posts" :key="post.id" :post="post" v-on:archive="getFeed"/>

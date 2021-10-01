@@ -1,7 +1,7 @@
 <template>
     <header class="mb-3 p-3">
-        <div v-if="isConnected" class="container-fluid m-auto row h-100">
-            <div class="col-2"></div>
+        <div v-if="isConnected" class="container-fluid m-auto row h-100 p-0">
+            <div class="col-2 d-none d-md-block"></div>
             <div class="col-4 d-flex h-100 align-items-center">
                 <div class="user-info d-flex align-items-center">
                     <div class="profilBtns d-flex flex-column">
@@ -15,7 +15,7 @@
             <div class="col-4">
                 <router-link to="/"><h1>GROUPOMANIA</h1></router-link>
             </div>
-            <div class="col-2"></div>
+            <div class="col-2 d-none d-md-block"></div>
         </div>
     </header>
 </template>
@@ -58,7 +58,7 @@ header {
     }
     h1 {
         color: white;
-        font-size: 3rem;
+        font-size: 2rem;
         text-decoration: none;
         text-align: right;
     }

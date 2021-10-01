@@ -9,3 +9,13 @@ $clr-teal: #2ec5b6;
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400;1,900&display=swap');
 $latoReg: 1rem 'Lato', sans-serif;
 $latoBold: 900 1rem 'Lato', sans-serif;
+
+//we set up a smaller rem value for smaller devices
+html {
+    font-size: 16px;
+}
+@media (max-width: 768px) {
+    html{
+        font-size: 12px;
+    } 
+}
