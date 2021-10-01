@@ -18,5 +18,7 @@ export default {
 .reply {
     padding-left: 3rem;
     border-bottom: 1px solid $clr-blue;
+    //this is to treat /n and /t as line breaks and tabulations
+    white-space: pre-wrap;
 }
 </style>

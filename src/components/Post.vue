@@ -88,6 +88,8 @@ export default {
     border: 2px solid $clr-teal;
     border-radius: 10px;
     position: relative;
+    //this is to treat /n and /t as line breaks and tabulations
+    white-space: pre-wrap;
 }
 .deleteBtn {
     position: absolute;
