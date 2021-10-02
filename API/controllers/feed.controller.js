@@ -28,6 +28,13 @@ exports.archivePost = (req, res, next) => {
     })
 };
 
+exports.archiveReply = (req, res, next) => {
+    const replyId = req.body.replyId;
+    Reply.archive(replyId, (err, result) => {
+        res.status(200).json({message: "Reply archived"})
+    })
+};
+
 exports.reply = (req, res, next) => {
     const newReply = new Reply({
         user_id: req.session.userData.id,

@@ -13,6 +13,7 @@ router.post('/getposts', auth, feedCtrl.getPosts);
 router.post('/archivepost', auth, feedCtrl.archivePost);
 router.post('/reply', auth, feedCtrl.reply);
 router.post('/getreplies', auth, feedCtrl.getReplies);
+router.post('/archivereply', auth, feedCtrl.archiveReply);
 
 //we export everything
 module.exports = router;

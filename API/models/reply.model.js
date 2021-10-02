@@ -47,4 +47,19 @@ Reply.getByPost = (postId, result) => {
   });
 };
 
+Reply.archive = (replyId, result) => {
+  const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  sql.query(`UPDATE replies SET date_deleted='${timestamp}' WHERE replies.id=${replyId}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null)
+      return;
+    }
+    //If everything is alright we have nothing more to do
+    console.log("archived reply");
+    result(null, res);
+    return;
+  });
+};
+
 module.exports = Reply;

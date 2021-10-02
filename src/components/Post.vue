@@ -17,7 +17,7 @@
         <button v-else @click="hideReplies" class="repliesBtn" value="Masquer les réponses">Masquer les réponses <i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <ReplyForm :postId="post.id" v-on:replied="getReplies(post.id)"/>
-    <Replies v-for="reply in replies" :key="reply.id" :reply="reply"/>
+    <Replies v-for="reply in replies" :key="reply.id" :reply="reply" v-on:archive="getReplies(post.id)"/>
     <div v-if="noReplies" class="no-replies p-1"><p>Il n'existe aucune réponse pour cette publication</p></div>
 </div>
 
