@@ -1,8 +1,17 @@
 <template>
 <div class="post-and-replies">
-    <div class="OP mt-5 p-2">
+    <div class="OP mt-5 p-2 pb-5">
         <h2>{{ post.lastname +" "+ post.firstname }}</h2>
         <p>{{ post.content }}</p>
+        <div v-if="hasPreview">
+            <a :href="preview.url" class="card preview">
+                <div class="card-body">
+                    <h3 class="card-title">{{ preview.title }}</h3>
+                    <p class="card-text">{{ preview.description }}</p>
+                </div>
+                <img :src="preview.image" alt="preview.description" class="card-img-bottom">
+            </a>
+        </div>
         <button @click="archive(post.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
         <button v-if="!showReplies" @click="getReplies(post.id)" class="repliesBtn" value="Afficher les réponses">Afficher les réponses <i class="fas fa-arrow-alt-circle-down"></i></button>
         <button v-else @click="hideReplies" class="repliesBtn" value="Masquer les réponses">Masquer les réponses <i class="fas fa-arrow-alt-circle-up"></i></button>
@@ -31,7 +40,9 @@ export default {
         return {
             noReplies: false,
             showReplies: false,
-            replies: []
+            replies: [],
+            hasPreview: false,
+            preview: "",
         }
     },
     methods: {
@@ -76,7 +87,31 @@ export default {
             this.noReplies = false;
             this.showReplies = false;
             this.replies = [];
+        },
+        //this method parses the content of the post and looks for urls to eventually preview
+        findUrls() {
+            //we use a regex to get an array of all urls in the content of the post
+            const urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+            const urls = this.post.content.match(urlRegex);
+            //we the  check if there are urls, and if so we call the getpreview function for the first one.
+            if(urls) {
+                this.getPreview(urls[0]);
+            }
+        },
+        //this function takes a url and returns a preview
+        async getPreview(url) {
+            //We call the preview API 
+            let response = await fetch("http://api.linkpreview.net/?key=4d0f71449764c124839e1c46e4098e52&q="+url);
+            if (response.ok) {
+                let preview = await response.json();
+                this.preview = preview;
+                this.hasPreview = true;
+            }
         }
+    },
+    mounted() {
+        //once the content is there, we check it for urls we should preview
+        this.findUrls();
     }
 }
 </script>
@@ -117,6 +152,16 @@ export default {
 }
 .no-replies {
     color: $clr-red;
+}
+
+.preview {
+    color: black;
+    text-decoration: none;
+    width: 80%;
+    img {
+        max-height: 200px;
+        object-fit: contain;
+    }
 }
 
 </style>
