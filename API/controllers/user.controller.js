@@ -98,4 +98,14 @@ exports.getGroups = (req, res, next) => {
         //we simply send back the array filed with group objects to the client
         res.status(200).json(groups);
     });
+};
+
+exports.delete = (req, res, next) => {
+    //we use the id in the session
+    let userId = req.session.userData.id;
+    //we call the delete method
+    User.delete(userId, (err, result) => {
+        //we simply send back an ok status code
+        res.status(200).send();
+    });
 }
