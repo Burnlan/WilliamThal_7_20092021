@@ -25,9 +25,9 @@ User.create = (newUser, result) => {
     });
 };
 
-//this method returns a user using it's email (which is specified as unique in our table)
+//this method returns a non-deleted user using it's email (which is specified as unique in our table)
 User.findByMail = (userMail, result) => {
-    sql.query(`SELECT * FROM users WHERE email="${userMail}"`, (err, res) => {
+    sql.query(`SELECT * FROM users WHERE email="${userMail}" AND date_deleted IS NULL`, (err, res) => {
         //if there is an error in the request
         if (err) {
             console.log("error: ", err);
@@ -71,14 +71,7 @@ User.delete = (userId, result) => {
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
     //we don't remove users from the DB, we remove user data from the database. This way we can let people access posts of "deleted" users, without keeping actual user info.
     //to do this we simply add a date of deletion and override userdata
-    const query = `UPDATE users SET 
-                    firstname=" ",
-                    lastname="Profile supprimé",
-                    pictureUrl="images/default_profile_picture.jpg",
-                    rights_id="1",
-                    email="anonyme",
-                    date_deleted=${timestamp}
-                    WHERE users.id=${userId}`
+    const query = `UPDATE users SET firstname=" ", lastname="Profile supprimé", pictureUrl="images/default_profile_picture.jpg", rights_id="1", email="anonyme", date_deleted='${timestamp}' WHERE users.id=${userId}`
     sql.query(query, (err, res) => {
         //if there is an error in the request
         if (err) {

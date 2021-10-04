@@ -19,7 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-                <button @click="deleteAccount" type="button" class="btn btn-danger">Supprimer mon compte</button>
+                <button @click="deleteAccount" type="button" class="btn btn-danger"  data-bs-dismiss="modal">Supprimer mon compte</button>
             </div>
             </div>
         </div>

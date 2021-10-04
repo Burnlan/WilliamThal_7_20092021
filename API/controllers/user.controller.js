@@ -17,10 +17,10 @@ exports.signup = (req, res, next) => {
             })
         console.log(user);
         //now we save the user in  the database
-        User.create(user)
-            .then(() => res.status(201).json({ message: 'New user created'}))
-            .catch(error => res.status(400).json({ error }));
+        User.create(user, (err, result) => {
+            res.status(201).json({ message: 'New user created'})
         });
+    });
 };
 
 //function to log in, and give a token to keep the session active
