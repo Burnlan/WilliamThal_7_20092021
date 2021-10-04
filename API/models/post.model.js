@@ -29,9 +29,11 @@ Post.create = (newPost, result) => {
 //we get all not-archived posts in a given group, with an inner join to also send back the name of the user associated with the post
 Post.findByGroupId = (groupId, result) => {
   //the query is long so we type it in a const
+  //we select the non-archived posts and their relevant data and order by from newest to oldest
   const query = `SELECT posts.id, posts.content, posts.date_created, posts.date_updated, users.firstname, users.lastname
                 FROM posts INNER JOIN users on posts.user_id=users.id 
-                WHERE group_id="${groupId}" AND posts.date_deleted IS NULL`
+                WHERE group_id="${groupId}" AND posts.date_deleted IS NULL
+                ORDER BY date_created DESC`
 
   sql.query(query, (err, res) => {
     //if there is an error in the request
