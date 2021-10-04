@@ -67,6 +67,77 @@ User.getGroups = (userId, result) => {
     });
 };
 
+User.getAllGroups = (result) => {
+    //We select all groups that the user could join
+    const query = `SELECT groups.name, groups.id FROM groups`
+    sql.query(query, (err, res) => {
+        //if there is an error in the request
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        //We check that we have a not-empty array
+        //We return our array as a response
+        if (res.length) {
+            result(null, res);
+            return;
+        }
+    })
+};
+
+User.isInGroup = (userId, groupId, result) => {
+    //we check if a user is in a given group
+    const query = `SELECT * FROM usergroups WHERE user_id=${userId} AND group_id=${groupId}`
+    sql.query(query, (err, res) => {
+        //if there is an error in the request
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        if(res.length){
+            //if there is a match
+            result(null, res)
+            return;
+        } else {
+            //if there is no match
+            result(null, 0)
+            return;
+        }
+    });
+};
+
+User.joinGroup = (userId, groupId, result) => {
+    //We add the userId and groupId to the usergroups table
+    const query = `INSERT INTO usergroups (user_id, group_id) VALUES(${userId}, ${groupId})`
+    sql.query(query, (err, res) => {
+        //if there is an error in the request
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        //otherwise everything is fine
+        result(null, res);
+    });
+};
+
+User.quitGroup = (userId, groupId, result) => {
+    //We delete the userId and groupId combo from the usergroups table
+    const query = `DELETE FROM usergroups WHERE user_id=${userId} AND group_id=${groupId}`
+    sql.query(query, (err, res) => {
+        //if there is an error in the request
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+        //otherwise everything is fine
+        result(null, res);
+    });
+};
+
 User.delete = (userId, result) => {
     const timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
     //we don't remove users from the DB, we remove user data from the database. This way we can let people access posts of "deleted" users, without keeping actual user info.

@@ -100,6 +100,45 @@ exports.getGroups = (req, res, next) => {
     });
 };
 
+exports.getAllGroups = (req, res, next) => {
+    //We simply get all the possible groups
+    User.getAllGroups((err, groups) => {
+        //Once we've set in values for every group we send our array to the client
+        res.status(200).json(groups);
+    });
+};
+
+exports.inGroup = (req, res, next) => {
+    let groupId = req.body.groupId;
+    let userId = req.session.userData.id;
+    User.isInGroup(userId, groupId, (err, result) => {
+       if(result == 0) {
+           //if the resulmt is 0 then the we send a 404 code
+           res.status(404).send();
+       } else {
+           //if the result is not 0 then we send an ok status code
+           res.status(200).send();
+       } 
+    });
+};
+
+exports.joinGroup = (req, res, next) => {
+    let groupId = req.body.groupId;
+    let userId = req.session.userData.id;
+    User.joinGroup(userId, groupId, (err, result) => {
+        res.status(200).send()
+    });
+};
+
+exports.quitGroup = (req, res, next) => {
+    let groupId = req.body.groupId;
+    let userId = req.session.userData.id;
+    User.quitGroup(userId, groupId, (err, result) => {
+        res.status(200).send()
+    });
+};
+
+
 exports.delete = (req, res, next) => {
     //we use the id in the session
     let userId = req.session.userData.id;
