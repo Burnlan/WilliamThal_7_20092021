@@ -33,11 +33,12 @@ export default {
                 //Sends the data in json format
                 body: JSON.stringify(this.signupdata)
             })
-        if(response.ok){
-            console.log("User "+this.signupdata.firstname+" successfully created !");
-        } else {
-            console.log(response);
-        }
+            if(response.ok){
+                console.log("User "+this.signupdata.firstname+" successfully created !");
+                this.$emit("signedup");
+            } else {
+                console.log(response);
+            }
         }
         
     }

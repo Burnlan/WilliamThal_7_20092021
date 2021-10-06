@@ -3,8 +3,8 @@
     <div class="OP mt-5 p-2 pb-5">
         <h2>{{ post.lastname +" "+ post.firstname }}</h2>
         <p>{{ post.content }}</p>
-        <div v-if="hasPreview">
-            <a :href="preview.url" class="card preview">
+        <div v-if="hasPreview" class="row g-2">
+            <a :href="preview.url" class="card preview col-md-6">
                 <div class="card-body">
                     <h3 class="card-title">{{ preview.title }}</h3>
                     <p class="card-text">{{ preview.description }}</p>
@@ -157,7 +157,6 @@ export default {
 .preview {
     color: black;
     text-decoration: none;
-    width: 80%;
     img {
         max-height: 200px;
         object-fit: contain;

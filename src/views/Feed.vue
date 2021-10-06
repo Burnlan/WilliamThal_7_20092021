@@ -4,7 +4,7 @@
     <div class="col-md-2 p-0">
         <SideBar :groups="groups"/>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 feed">
         <PostForm v-if="$route.query.groupid" v-on:posted="getFeed"/>
         <div v-else class="default p-5"><h2>Aucun groupe n'est selectionné</h2></div>
         <Post v-for="post in posts" :key="post.id" :post="post" v-on:archive="getFeed"/>
@@ -83,5 +83,8 @@ export default {
     h2 {
         font-size: 2rem;
     }
+}
+.feed {
+    margin-bottom: 500px;
 }
 </style>

@@ -11,8 +11,8 @@
         <form class="d-flex flex-column mb-5">
             <h2>Modifiez vos informations</h2>
             <label for="imgInput" class="form-label">Changer de photo de profil</label>
-            <input type="file" id="imgInput" class="form-control" accept="image/png, image/jpeg" ref="imgfile">
-            <button @click="uploadProfilePicture" class="btn btn-primary mt-1 align-self-end">Valider</button>
+            <input type="file" id="imgInput" class="form-control" disabled accept="image/png, image/jpeg" ref="imgfile">
+            <button @click="uploadProfilePicture" class="btn btn-primary disabled mt-1 align-self-end">Valider</button>
         </form>
         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Supprimer mon compte</button>
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">

@@ -8,7 +8,7 @@
     <button @click="select('login')" class="btn btn-outline-primary" ref="logbtn">Se connecter</button>
   </div>
   
-  <Signup v-if="signup" />
+  <Signup v-if="signup" @signedup="signedUp"/>
   <Login v-else />
 
 </div>
@@ -48,6 +48,9 @@ export default {
         this.$refs.logbtn.classList.add("active");
         this.signup = false;
       }
+    },
+    signedUp() {
+      this.$router.go();
     }
   }
 }
