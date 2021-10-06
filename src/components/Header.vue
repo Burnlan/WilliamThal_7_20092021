@@ -3,14 +3,16 @@
         <div v-if="isConnected" class="container-fluid m-auto row h-100 p-0">
             <div class="col-2 d-none d-md-block"></div>
             <div class="col-4 d-flex h-100 align-items-center">
+                <router-link to="/settings" class="settings">
                 <div class="user-info d-flex align-items-center">
                     <div class="profilBtns d-flex flex-column">
                         <span class="disconnect"><i class="far fa-times-circle" title="Se déconnecter" @click="disconnect"></i></span>
-                        <router-link to="/settings" class="settings"><i class="fas fa-cog mt-2" title="Paramètres"></i></router-link>
+                        <i class="fas fa-cog mt-2" title="Paramètres"></i>
                     </div>
                     <img :src="'http://localhost:8080/favicon.png'" alt="user picture" class="profile-picture">
-                    <h3><span class="firstname">{{ user.firstname }}</span> <br> {{user.lastname }}</h3>
+                    <h3><span class="firstname">{{ user.firstname }}</span> <br> {{user.lastname }}</h3>    
                 </div>
+                </router-link>
             </div>
             <div class="col-3">
                 <router-link to="/"><h1>GROUPOMANIA</h1></router-link>
