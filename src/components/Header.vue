@@ -1,5 +1,5 @@
 <template>
-    <header class="mb-3 p-3">
+    <header class="mb-1 p-3">
         <div v-if="isConnected" class="container-fluid m-auto row h-100 p-0">
             <div class="col-2 d-none d-md-block"></div>
             <div class="col-4 d-flex h-100 align-items-center">
@@ -12,10 +12,10 @@
                     <h3><span class="firstname">{{ user.firstname }}</span> <br> {{user.lastname }}</h3>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <router-link to="/"><h1>GROUPOMANIA</h1></router-link>
             </div>
-            <div class="col-2 d-none d-md-block"></div>
+            <div class="col-3 d-none d-md-block"></div>
         </div>
     </header>
 </template>

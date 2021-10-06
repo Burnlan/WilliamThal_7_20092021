@@ -1,10 +1,10 @@
 <template>
 
 <div class="row flex-column flex-md-row">
-    <div class="col-md-2 p-0">
-        <SideBar :groups="groups"/>
+    <div class="col-md-2 p-2">
+        <SideBar :groups="groups" :currentGroup="currentGroup"/>
     </div>
-    <div class="col-md-7 feed">
+    <div class="col-md-7 mt-2 feed">
         <PostForm v-if="$route.query.groupid" v-on:posted="getFeed"/>
         <div v-else class="default p-5"><h2>Aucun groupe n'est selectionné</h2></div>
         <Post v-for="post in posts" :key="post.id" :post="post" v-on:archive="getFeed"/>
@@ -27,7 +27,8 @@ export default {
     data() {
         return {
             groups: [],
-            posts: []
+            posts: [],
+            currentGroup: "",
         }
     },
     methods: {
@@ -64,14 +65,16 @@ export default {
                 console.log(this.posts);
             }
         },
+        
     },
     mounted() {
         this.displayGroups();
     },
-    //we watch for changes in the url to call our getFeed function
+    //we watch for changes in the url to call our getFeed function and keep track of our current group
     watch: {
         $route () {
             this.getFeed();
+            this.currentGroup = this.$route.query.groupid;
         }
     }
 }
@@ -87,4 +90,5 @@ export default {
 .feed {
     margin-bottom: 500px;
 }
+
 </style>

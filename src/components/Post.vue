@@ -1,6 +1,6 @@
 <template>
 <div class="post-and-replies">
-    <div class="OP mt-5 p-2 pb-5">
+    <div class="OP mt-4 p-2 pb-5">
         <h2>{{ post.lastname +" "+ post.firstname }}</h2>
         <p>{{ post.content }}</p>
         <div v-if="hasPreview" class="row g-2">
