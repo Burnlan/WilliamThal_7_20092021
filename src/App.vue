@@ -59,6 +59,9 @@ export default {
 
 
 <style lang="scss">
+
+@import "./scss/customBS.scss";
+
 h1, h2, h3 {
   font: $latoBold;
 }
