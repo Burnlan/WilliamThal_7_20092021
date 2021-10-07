@@ -63,12 +63,15 @@ header {
         font-size: 2rem;
         text-decoration: none;
         text-align: right;
+        font-weight: 900;
     }
 }
 .user-info {
     color: white;
     h3 {
         align-self: end;
+        font: $latoBold;
+        font-size: 1.2rem;
         .firstname {
             font-weight: 400;
         }

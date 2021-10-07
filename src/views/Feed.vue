@@ -84,6 +84,7 @@ export default {
 .default {
     text-align: center;
     h2 {
+        font: $latoBold;
         font-size: 2rem;
     }
 }

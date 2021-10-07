@@ -125,6 +125,10 @@ export default {
     position: relative;
     //this is to treat /n and /t as line breaks and tabulations
     white-space: pre-wrap;
+    h2 {
+        font: $latoBold;
+        font-size: 1.4rem;
+    }
 }
 .deleteBtn {
     position: absolute;
@@ -157,6 +161,10 @@ export default {
 .preview {
     color: black;
     text-decoration: none;
+    .card-title {
+        font: $latoBold;
+        font-size: 1.2rem;
+    }
     img {
         max-height: 200px;
         object-fit: contain;

@@ -40,6 +40,10 @@ export default {
     //this is to treat /n and /t as line breaks and tabulations
     white-space: pre-wrap;
     position: relative;
+    h2 {
+        font: $latoBold;
+        font-size: 1.2rem;
+    }
 }
 .deleteBtn {
     position: absolute;
