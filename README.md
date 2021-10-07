@@ -21,51 +21,51 @@ What's it like ? Here are their descriptions
                 +--------------+----------------------+------+-----+---------+----------------+  
 
 ##### Groups  
-+-------+----------------------+------+-----+---------+----------------+  
-| Field | Type                 | Null | Key | Default | Extra          |  
-+-------+----------------------+------+-----+---------+----------------+  
-| id    | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
-| name  | varchar(100)         | NO   |     | NULL    |                |  
-+-------+----------------------+------+-----+---------+----------------+  
+                +-------+----------------------+------+-----+---------+----------------+  
+                | Field | Type                 | Null | Key | Default | Extra          |  
+                +-------+----------------------+------+-----+---------+----------------+  
+                | id    | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
+                | name  | varchar(100)         | NO   |     | NULL    |                |  
+                +-------+----------------------+------+-----+---------+----------------+  
 
 ##### UserGroups   
-+----------+----------------------+------+-----+---------+-------+  
-| Field    | Type                 | Null | Key | Default | Extra |  
-+----------+----------------------+------+-----+---------+-------+  
-| user_id  | smallint(5) unsigned | NO   | MUL | NULL    |       |  
-| group_id | smallint(5) unsigned | NO   | MUL | NULL    |       |  
-+----------+----------------------+------+-----+---------+-------+  
+                +----------+----------------------+------+-----+---------+-------+  
+                | Field    | Type                 | Null | Key | Default | Extra |  
+                +----------+----------------------+------+-----+---------+-------+  
+                | user_id  | smallint(5) unsigned | NO   | MUL | NULL    |       |  
+                | group_id | smallint(5) unsigned | NO   | MUL | NULL    |       |  
+                +----------+----------------------+------+-----+---------+-------+  
 
 ##### Rights  
-+-----------+----------------------+------+-----+---------+----------------+  
-| Field     | Type                 | Null | Key | Default | Extra          |  
-+-----------+----------------------+------+-----+---------+----------------+  
-| id        | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
-| user_type | varchar(30)          | YES  |     | NULL    |                |  
-+-----------+----------------------+------+-----+---------+----------------+  
+                +-----------+----------------------+------+-----+---------+----------------+  
+                | Field     | Type                 | Null | Key | Default | Extra          |  
+                +-----------+----------------------+------+-----+---------+----------------+  
+                | id        | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
+                | user_type | varchar(30)          | YES  |     | NULL    |                |  
+                +-----------+----------------------+------+-----+---------+----------------+  
 
 ##### Posts  
-+--------------+----------------------+------+-----+---------+----------------+  
-| Field        | Type                 | Null | Key | Default | Extra          |  
-+--------------+----------------------+------+-----+---------+----------------+  
-| id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
-| user_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |  
-| group_id     | smallint(5) unsigned | NO   | MUL | NULL    |                |  
-| date_created | datetime             | NO   |     | NULL    |                |  
-| content      | text                 | NO   |     | NULL    |                |  
-| date_updated | datetime             | YES  |     | NULL    |                |   
-| date_deleted | datetime             | YES  |     | NULL    |                |  
-+--------------+----------------------+------+-----+---------+----------------+  
+                +--------------+----------------------+------+-----+---------+----------------+  
+                | Field        | Type                 | Null | Key | Default | Extra          |  
+                +--------------+----------------------+------+-----+---------+----------------+  
+                | id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
+                | user_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |  
+                | group_id     | smallint(5) unsigned | NO   | MUL | NULL    |                |  
+                | date_created | datetime             | NO   |     | NULL    |                |  
+                | content      | text                 | NO   |     | NULL    |                |  
+                | date_updated | datetime             | YES  |     | NULL    |                |   
+                | date_deleted | datetime             | YES  |     | NULL    |                |  
+                +--------------+----------------------+------+-----+---------+----------------+  
 
 ##### Replies  
-+--------------+----------------------+------+-----+---------+----------------+  
-| Field        | Type                 | Null | Key | Default | Extra          |  
-+--------------+----------------------+------+-----+---------+----------------+  
-| id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |    
-| user_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |  
-| post_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |  
-| date_created | datetime             | NO   |     | NULL    |                |  
-| content      | text                 | NO   |     | NULL    |                |  
-| date_updated | datetime             | YES  |     | NULL    |                |  
-| date_deleted | datetime             | YES  |     | NULL    |                |  
-+--------------+----------------------+------+-----+---------+----------------+  
+                +--------------+----------------------+------+-----+---------+----------------+  
+                | Field        | Type                 | Null | Key | Default | Extra          |  
+                +--------------+----------------------+------+-----+---------+----------------+  
+                | id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |    
+                | user_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |  
+                | post_id      | smallint(5) unsigned | NO   | MUL | NULL    |                |  
+                | date_created | datetime             | NO   |     | NULL    |                |  
+                | content      | text                 | NO   |     | NULL    |                |  
+                | date_updated | datetime             | YES  |     | NULL    |                |  
+                | date_deleted | datetime             | YES  |     | NULL    |                |  
+                +--------------+----------------------+------+-----+---------+----------------+  
