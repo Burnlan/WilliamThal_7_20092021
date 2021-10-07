@@ -3,3 +3,10 @@ $danger: $clr-red;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+h1, h2, h3 {
+    font: $latoBold;
+  }
+  
+  p, a, li, label, textarea {
+    font: $latoReg;
+  }
