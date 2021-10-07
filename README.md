@@ -6,19 +6,19 @@ _____________________________________________________
 What's it like ? Here are their descriptions
 
 ##### Users  
-+--------------+----------------------+------+-----+---------+----------------+  
-| Field        | Type                 | Null | Key | Default | Extra          |  
-+--------------+----------------------+------+-----+---------+----------------+  
-| id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
-| firstname    | varchar(40)          | NO   |     | NULL    |                |  
-| lastname     | varchar(40)          | NO   |     | NULL    |                |  
-| pictureUrl   | varchar(500)         | YES  |     | NULL    |                |  
-| rights_id    | smallint(5) unsigned | NO   | MUL | NULL    |                |  
-| email        | varchar(50)          | NO   | UNI | NULL    |                |  
-| password     | varchar(64)          | NO   |     | NULL    |                |  
-| date_created | datetime             | YES  |     | NULL    |                |  
-| date_deleted | datetime             | YES  |     | NULL    |                |  
-+--------------+----------------------+------+-----+---------+----------------+  
+                +--------------+----------------------+------+-----+---------+----------------+  
+                | Field        | Type                 | Null | Key | Default | Extra          |  
+                +--------------+----------------------+------+-----+---------+----------------+  
+                | id           | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |  
+                | firstname    | varchar(40)          | NO   |     | NULL    |                |  
+                | lastname     | varchar(40)          | NO   |     | NULL    |                |  
+                | pictureUrl   | varchar(500)         | YES  |     | NULL    |                |  
+                | rights_id    | smallint(5) unsigned | NO   | MUL | NULL    |                |  
+                | email        | varchar(50)          | NO   | UNI | NULL    |                |  
+                | password     | varchar(64)          | NO   |     | NULL    |                |  
+                | date_created | datetime             | YES  |     | NULL    |                |  
+                | date_deleted | datetime             | YES  |     | NULL    |                |  
+                +--------------+----------------------+------+-----+---------+----------------+  
 
 ##### Groups  
 +-------+----------------------+------+-----+---------+----------------+  
