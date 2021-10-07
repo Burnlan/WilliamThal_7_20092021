@@ -30,7 +30,7 @@ Post.create = (newPost, result) => {
 Post.findByGroupId = (groupId, result) => {
   //the query is long so we type it in a const
   //we select the non-archived posts and their relevant data and order by from newest to oldest
-  const query = `SELECT posts.id, posts.content, posts.date_created, posts.date_updated, users.firstname, users.lastname
+  const query = `SELECT posts.id, posts.content, posts.date_created, posts.date_updated, users.firstname, users.lastname, users.id AS userId
                 FROM posts INNER JOIN users on posts.user_id=users.id 
                 WHERE group_id="${groupId}" AND posts.date_deleted IS NULL
                 ORDER BY date_created DESC`
@@ -44,7 +44,7 @@ Post.findByGroupId = (groupId, result) => {
     }
     //We check that we have a not-empty array
     if (res.length) {
-    //we return an aray containing all the posts
+    //we return an aray containing all the posts and their data
       result(null, res);
       return;
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="reply pt-2 pb-2 mb-2">
-        <button @click="archive(reply.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+        <button @click="archive(reply.id)" class="deleteBtn" v-if="reply.hasRights"><i class="fas fa-trash-alt"></i></button>
         <h2>{{ reply.firstname +" "+reply.lastname }}</h2>
         <p>{{ reply.content }}</p>
     </div>

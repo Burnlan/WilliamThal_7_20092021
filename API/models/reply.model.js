@@ -26,7 +26,7 @@ Reply.create = (newReply, result) => {
 
 //we get all the not-archived replies associated with a post, with an inner join to also get user info
 Reply.getByPost = (postId, result) => {
-  const query = `SELECT replies.id, replies.content, replies.date_created, replies.date_updated, users.firstname, users.lastname
+  const query = `SELECT replies.id, replies.content, replies.date_created, replies.date_updated, users.firstname, users.lastname, users.id AS userId
                   FROM replies INNER JOIN users on replies.user_id=users.id
                   WHERE post_id=${postId} AND replies.date_deleted IS NULL`
   sql.query(query, (err, res) => {

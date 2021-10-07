@@ -55,7 +55,8 @@ exports.login = (req, res, next) => {
                         id: foundUser.id,
                         firstname: foundUser.firstname,
                         lastname: foundUser.lastname,
-                        pictureUrl: foundUser.pictureUrl
+                        pictureUrl: foundUser.pictureUrl,
+                        rightsId: foundUser.rights_id
                     }
                     //we pass userData in our user session
                     req.session.userData = userData;

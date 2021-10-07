@@ -62,12 +62,4 @@ export default {
 
 @import "./scss/customBS.scss";
 
-h1, h2, h3 {
-  font: $latoBold;
-}
-
-p, a, li, label, textarea {
-  font: $latoReg;
-}
-
 </style>

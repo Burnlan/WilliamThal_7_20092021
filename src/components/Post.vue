@@ -12,7 +12,7 @@
                 <img :src="preview.image" alt="preview.description" class="card-img-bottom">
             </a>
         </div>
-        <button @click="archive(post.id)" class="deleteBtn"><i class="fas fa-trash-alt"></i></button>
+        <button @click="archive(post.id)" class="deleteBtn" v-if="post.hasRights"><i class="fas fa-trash-alt"></i></button>
         <button v-if="!showReplies" @click="getReplies(post.id)" class="repliesBtn" value="Afficher les réponses">Afficher les réponses <i class="fas fa-arrow-alt-circle-down"></i></button>
         <button v-else @click="hideReplies" class="repliesBtn" value="Masquer les réponses">Masquer les réponses <i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
