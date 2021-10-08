@@ -1,5 +1,5 @@
 # INFOS ABOUT THE PROJECT
-
+To run the project, launch the frontend using "npm run serve" and the backend using "nodemon server" (if nodemon is installed)
 _____________________________________________________
 
 ### DATABASE STRUCTURE
