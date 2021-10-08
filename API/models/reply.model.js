@@ -18,7 +18,7 @@ Reply.create = (newReply, result) => {
           result(err, null);
           return;
         }
-        console.log("created replyy: ", { id: res.insertId, ...newReply });
+        console.log("created reply: ", { id: res.insertId, ...newReply });
         result(null, res);
         return;
       });

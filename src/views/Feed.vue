@@ -1,5 +1,4 @@
 <template>
-
 <div class="row flex-column flex-md-row">
     <div class="col-md-2 p-2">
         <SideBar :groups="groups" :currentGroup="currentGroup"/>
